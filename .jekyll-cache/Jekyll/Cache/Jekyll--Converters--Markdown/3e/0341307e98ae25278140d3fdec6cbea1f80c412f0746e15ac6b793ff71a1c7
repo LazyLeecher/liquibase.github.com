@@ -1,0 +1,2 @@
+I"(<p>The <a href="http://www.liquibase.org/quickstart.html">Quick Start Guide</a> works well for starting Liquibase on a new project because your empty changelog file matches your empty database. However, when you have an existing project with an existing database things are more complicated.</p>
+:ET

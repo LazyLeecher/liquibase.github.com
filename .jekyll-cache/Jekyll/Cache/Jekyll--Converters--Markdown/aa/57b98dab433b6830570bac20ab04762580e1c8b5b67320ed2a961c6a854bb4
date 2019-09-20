@@ -1,0 +1,68 @@
+I"Ë<h1 id="yaml-format">YAML Format</h1>
+
+<p>Liquibase supports <a href="http://www.yaml.org">YAML</a> as a format for storing your changelog files.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>To use YAML-based changelogs, you must include <a href="https://bitbucket.org/asomov/snakeyaml/">snakeyaml-1.12.jar</a> in your classpath.</p>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>None</p>
+
+<h2 id="example">Example</h2>
+
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">databaseChangeLog</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">preConditions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">runningAs</span><span class="pi">:</span>
+        <span class="na">username</span><span class="pi">:</span> <span class="s">liquibase</span>
+
+  <span class="pi">-</span> <span class="na">changeSet</span><span class="pi">:</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="m">1</span>
+      <span class="na">author</span><span class="pi">:</span> <span class="s">nvoxland</span>
+      <span class="na">changes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">createTable</span><span class="pi">:</span>
+            <span class="na">tableName</span><span class="pi">:</span> <span class="s">person</span>
+            <span class="na">columns</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">column</span><span class="pi">:</span>
+                  <span class="na">name</span><span class="pi">:</span> <span class="s">id</span>
+                  <span class="na">type</span><span class="pi">:</span> <span class="s">int</span>
+                  <span class="na">autoIncrement</span><span class="pi">:</span> <span class="no">true</span>
+                  <span class="na">constraints</span><span class="pi">:</span>
+                    <span class="na">primaryKey</span><span class="pi">:</span> <span class="no">true</span>
+                    <span class="na">nullable</span><span class="pi">:</span> <span class="no">false</span>
+              <span class="pi">-</span> <span class="na">column</span><span class="pi">:</span>
+                  <span class="na">name</span><span class="pi">:</span> <span class="s">firstname</span>
+                  <span class="na">type</span><span class="pi">:</span> <span class="s">varchar(50)</span>
+              <span class="pi">-</span> <span class="na">column</span><span class="pi">:</span>
+                  <span class="na">name</span><span class="pi">:</span> <span class="s">lastname</span>
+                  <span class="na">type</span><span class="pi">:</span> <span class="s">varchar(50)</span>
+                  <span class="na">constraints</span><span class="pi">:</span>
+                    <span class="na">nullable</span><span class="pi">:</span> <span class="no">false</span>
+              <span class="pi">-</span> <span class="na">column</span><span class="pi">:</span>
+                  <span class="na">name</span><span class="pi">:</span> <span class="s">state</span>
+                  <span class="na">type</span><span class="pi">:</span> <span class="s">char(2)</span>
+
+  <span class="pi">-</span> <span class="na">changeSet</span><span class="pi">:</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="m">2</span>
+      <span class="na">author</span><span class="pi">:</span> <span class="s">nvoxland</span>
+      <span class="na">changes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">addColumn</span><span class="pi">:</span>
+            <span class="na">tableName</span><span class="pi">:</span> <span class="s">person</span>
+            <span class="na">columns</span><span class="pi">:</span>
+              <span class="pi">-</span> <span class="na">column</span><span class="pi">:</span>
+                  <span class="na">name</span><span class="pi">:</span> <span class="s">username</span>
+                  <span class="na">type</span><span class="pi">:</span> <span class="s">varchar(8)</span>
+
+  <span class="pi">-</span> <span class="na">changeSet</span><span class="pi">:</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="m">3</span>
+      <span class="na">author</span><span class="pi">:</span> <span class="s">nvoxland</span>
+      <span class="na">changes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">addLookupTable</span><span class="pi">:</span>
+            <span class="na">existingTableName</span><span class="pi">:</span> <span class="s">person</span>
+            <span class="s">existingColumnName:state</span>
+            <span class="na">newTableName</span><span class="pi">:</span> <span class="s">state</span>
+            <span class="na">newColumnName</span><span class="pi">:</span> <span class="s">id</span>
+            <span class="na">newColumnDataType</span><span class="pi">:</span> <span class="s">char(2)</span></code></pre></figure>
+
+:ET

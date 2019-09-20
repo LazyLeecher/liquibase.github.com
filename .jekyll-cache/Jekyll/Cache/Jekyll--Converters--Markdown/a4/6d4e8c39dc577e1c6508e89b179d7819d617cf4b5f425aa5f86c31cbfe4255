@@ -1,0 +1,14 @@
+I"�<p>Liquibase 3.6.2 is now available from <a href="http://liquibase.org/download">liquibase.org/download</a> and through the Maven repositories. Question or comments can be directed <a href="http://liquibase.org/community">to liquibase.org/community</a></p>
+
+<p>Version 3.6.2 is a bugfix release while we work on a 3.7.0 release.</p>
+
+<h3 id="fixes-include">Fixes include</h3>
+
+<ul>
+  <li>Fixed breaking API change</li>
+  <li>Improvements to spring boot includeAll</li>
+  <li>Oracle 11g doesn’t support TIMESTAMP WITHOUT TIME ZONE data type</li>
+  <li>Fix in PostgreSQL dropPrimaryKey with objectQuotingStrategy=”QUOTE_ALL_OBJECTS”</li>
+</ul>
+
+:ET

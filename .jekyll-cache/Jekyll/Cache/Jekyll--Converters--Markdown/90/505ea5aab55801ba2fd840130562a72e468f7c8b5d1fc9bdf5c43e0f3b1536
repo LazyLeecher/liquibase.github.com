@@ -1,0 +1,6 @@
+I"­<p>The issue that caused me to pull the <a href="http://www.liquibase.org/2016/09/liquibase-3-5-2-released.html">3.5.2 release</a> turned out to be a false alarm.</p>
+
+<p>Therefore, Liquibase 3.5.3 is now available from <a href="http://liquibase.org/download">liquibase.org/download</a> and through the Maven repositories with no changes vs 3.5.2 besides a new version number.</p>
+
+<p>Sorry for any inconvenience or concern.</p>
+:ET

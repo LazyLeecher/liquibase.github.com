@@ -1,0 +1,47 @@
+I"q<h1 id="liquibase-for-dbas">Liquibase for DBAs</h1>
+
+<h3 id="no-change-is-forgotten">No change is forgotten</h3>
+
+<p>Liquibase <a href="documentation/databasechangelog.html">tracks which changelog statements</a> have run against each database, so you no longer have to manually track what statements have been run against each database and which have not.</p>
+
+<h3 id="like-sql-use-sql">Like SQL? Use SQL</h3>
+
+<p>XML-formatted changelogs have their advantages, but many DBAs still prefer good, old fashioned SQL. If that is what you are most comfortable working with, <a href="documentation/sql_format.html">Liquibase-formatted SQL</a> gives you the standard changeSet tracking used in any changelog format, but lets you specify the exact SQL you want.</p>
+
+<h3 id="manually-verify-the-database-changes-with-each-release">Manually verify the database changes with each release</h3>
+
+<p>Liquibase supports an <a href="documentation/sql_output.html">“updateSql”</a> command which will not actually update the database, but instead output the SQL that will run. That script can be read through and verified to ensure everything is correct and doing what it is supposed to.</p>
+
+<p>After you know everything is correct, you can either run liquibase update, or run your script through your favorite tools. The script will include the <a href="documentation/databasechangelog_table.html">DATABASECHANGELOG</a> inserts so everything will still be correctly tracked.</p>
+
+<h3 id="prepare-for-deployment-problems">Prepare for deployment problems</h3>
+
+<p>Releases don’t always go as planned, and so Liquibase lets you ensure your contingency plans are correct before each release. As you near a release, besides checking the updateSql output, you can also run <a href="documentation/rollback.html">futureRollbackSql</a> which will output the SQL needed to bring a fully updated database back to the current state. It will be much less stressful verifying the rollback logic BEFORE the release.</p>
+
+<h3 id="a-unified-changelog-for-all-your-databases">A unified changelog for all your databases</h3>
+
+<p>You try to keep all your databases the same, but there are always differences. QA needs test data, production gets a couple extra tables, and the hot-backup server needs extra configuration. Liquibase supports contexts, labels, parameters, and preconditions that let you address minor differences in your scripts to adjust things as needed.</p>
+
+<ul>
+  <li><a href="/documentation/contexts.html">Contexts</a> and labels let you target certain changeSets to run in only some environments.</li>
+  <li><a href="/documentation/changelog_parameters.html">Parameters</a> let you do simple text substitutions when things like schema names vary from database to database.</li>
+  <li><a href="/documentation/preconditions.html">Preconditions</a> let you check the state of the database to dynamically determine if a changeSet should be executed or not.</li>
+</ul>
+
+<p>Thanks to Liquibase’s [cross-database support](/databases.html, you can even use a single changelog that supports Oracle, MS SqlServer, Postgresql, and more.</p>
+
+<h3 id="enterprise-features-with-datical">Enterprise features with Datical</h3>
+
+<p>Beyond all the standard Liquibase functionality, Datical lets you</p>
+
+<ul>
+  <li><a href="http://www.datical.com/product/packaging-intelligence/">Package database schema changes</a> alongside application code</li>
+  <li>Simulate deployments to <a href="http://www.datical.com/product/validation-intelligence/">forecast potential errors</a></li>
+  <li><a href="http://www.datical.com/product/management-intelligence/">Know the deployment status</a> of every schema in the database</li>
+  <li>Integrate with popular <a href="http://www.datical.com/integrations/">DevOps tools</a></li>
+</ul>
+
+<hr />
+
+<p>Liquibase for <a href="/qa.html">QA</a> | <a href="/developer.html">Developers</a> | <a href="/release_manager.html">Release Managers</a></p>
+:ET

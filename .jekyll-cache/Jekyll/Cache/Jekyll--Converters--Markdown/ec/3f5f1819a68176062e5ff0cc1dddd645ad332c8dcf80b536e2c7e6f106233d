@@ -1,0 +1,35 @@
+I"�<p>We have reviewed and accepted pull requests for extensions that add and enhance support for Hibernate and HANA. Hibernate is one of the most popular Java ORMs and SAP HANA powers critical ERP, CRM, and SRM systems.</p>
+
+<h3 id="check-out-whats-new-with-the-hibernate-extension">Check out what’s new with the Hibernate extension</h3>
+<p>The updated Liquibase Hibernate extension improves:</p>
+
+<ul>
+  <li>Support for latest Liquibase core releases (3.6)</li>
+  <li>Support for Bean validation annotation</li>
+  <li>Better handling of indexes and constraints</li>
+  <li>Better handling of physicalNamingStrategy</li>
+  <li>Support for using sequence start values</li>
+</ul>
+
+<p>[Download the Hibernate extension] (https://github.com/liquibase/liquibase-hibernate/releases/tag/liquibase-hibernate5-3.7)</p>
+
+<h3 id="check-out-whats-new-with-the-hana-extension">Check out what’s new with the HANA extension</h3>
+<p>The updated Liquibase HANA extension supports the latest Liquibase 3.6.3 release and adds a ton of functional improvements to HANA support. A huge thanks to <a href="https://github.com/breglerj">Jonathan Bregler</a> Software Engineer at SAP, for all of the work he contributed to Liquibase HANA support.</p>
+
+<p><a href="https://github.com/liquibase/liquibase-hanadb/releases/tag/liquibase-hanadb-2.0">Download the HANA extension</a></p>
+
+<h3 id="download-the-extension-updates">Download the extension updates</h3>
+<ul>
+  <li><a href="https://github.com/liquibase/liquibase-hibernate/releases/tag/liquibase-hibernate5-3.7">Download the Hibernate extension</a></li>
+  <li><a href="https://github.com/liquibase/liquibase-hanadb/releases/tag/liquibase-hanadb-2.0">Download the HANA extension</a></li>
+</ul>
+
+<p>Or, you can download both extensions from the <a href="https://mvnrepository.com/repos/central">central Maven repository</a>.</p>
+
+<p>Want to learn more about Liquibase extensions? <a href="https://liquibase.jira.com/wiki/spaces/CONTRIB/overview">View the Liquibase Extensions Portal</a>.</p>
+
+<h3 id="download-liquibase">Download Liquibase</h3>
+<p><a href="https://download.liquibase.org/">Download the current version of Liquibase 3.6.3</a>, source control for your database.</p>
+
+<p>Thanks for your continued support. Enjoy the updated extensions.</p>
+:ET

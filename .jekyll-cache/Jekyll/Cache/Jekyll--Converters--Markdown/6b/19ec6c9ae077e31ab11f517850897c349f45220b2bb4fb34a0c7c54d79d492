@@ -1,0 +1,39 @@
+I"_	<p>Liquibase 1.9.0 has been released!</p>
+
+<p>Major features include:</p>
+
+<ul>
+  <li><a href="http://www.liquibase.org/manual/modify_sql"><code class="highlighter-rouge">modifySql</code> support</a></li>
+  <li><a href="http://www.liquibase.org/manual/includeall"><code class="highlighter-rouge">includeAll</code> support</a></li>
+  <li>Sybase Adaptive SQL Anywhere support</li>
+  <li>Paths in <code class="highlighter-rouge">&lt;include&gt;</code> can be relative to changelog using the “relativeToChangeLog” attribute</li>
+  <li><a href="http://www.liquibase.org/manual/stop"><code class="highlighter-rouge">stop</code> support</a></li>
+  <li>runInTransaction attribute for changeSet</li>
+  <li>Stronger validation in .xsd</li>
+  <li>Better Derby support (drop column, rename column)</li>
+  <li>Bug fixes</li>
+</ul>
+
+<p>If you are using the standard Liquibase library, upgrading is simply a matter of replacing the liquibase.jar file.  If you are using Grails, Maven, or the IntelliJ plugin, an updated version should be available via standard plugin repository within in the next day.</p>
+
+<p>*NOTE: DUE TO A BUG IN THE “ADD NOT NULL CONSTRAINT” AND “DROP NOT NULL CONSTRAINT” CODE, YOU WILL GET CHECKSUM VALIDATION ERRORS FOR EXISTING CHANGESETS THAT USE THOSE TAGS. *</p>
+
+<p>To solve the problem, either:</p>
+
+<ol>
+  <li>Add the <code class="highlighter-rouge">&lt;validCheckSum&gt;</code> tag to the failing changesets specifying the old MD5 sum (the one listed in the validation failed message)</li>
+  <li>Or, run <code class="highlighter-rouge">UPDATE DATABASECHANGELOG SET MD5SUM=NULL</code></li>
+</ol>
+
+<p>To take advantage of newer change log features, change your XSD declaration to:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;databasechangelog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xsi="http://www.w3.org/2001/XMLSchema-instance"
+    schemalocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"&gt;
+</code></pre></div></div>
+
+<p>Download Liquibase 1.9 from: <a href="http://www.liquibase.org/download">http://www.liquibase.org/download</a></p>
+
+<p>As usual, make sure you let us know if you have any questions, problems, or ideas. Also, thank you to everyone who submitted bug reports and patches over the last couple months.</p>
+:ET

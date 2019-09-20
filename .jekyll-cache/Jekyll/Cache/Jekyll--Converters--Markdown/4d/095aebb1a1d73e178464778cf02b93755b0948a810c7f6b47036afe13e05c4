@@ -1,0 +1,13 @@
+I"„<p>Liquibase 1.2.1 is a minor bugfix release to address the following issues:</p>
+
+<ul>
+  <li>
+    <p>Ordering of default values and not null clauses on some databases including Oracle</p>
+  </li>
+  <li>
+    <p>Sequences were not included in the generateChangeLog output
+The update is available on the <a href="http://www.liquibase.org/download.html">download page</a></p>
+  </li>
+</ul>
+
+:ET

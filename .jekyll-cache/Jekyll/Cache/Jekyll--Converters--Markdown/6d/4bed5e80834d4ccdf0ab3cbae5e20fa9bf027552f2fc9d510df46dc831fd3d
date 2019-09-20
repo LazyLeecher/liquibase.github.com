@@ -1,0 +1,49 @@
+I"�<p>Although it has been far too long since the last liquibase release, that is not from a lack of work. I’ve been hard at work at a major update that has been stuck in the “I think I’ll have it wrapped up next month” phase for over a year at this point. That is a topic for a future blog post, though…</p>
+
+<p>I am, however, very pleased to announce Liquibase 3.0, beta 1. There is definitely a reason it is labeled as “beta” rather than “RC” as there is still a lot of work to do on documentation, API finalization, and bug fixes. In particular, my roadmap for 3.0 beta 1 -&gt; 3.0.0 final is:</p>
+
+<ul>
+  <li>Vet Liquibase API changes. The goal of the 2.0 release was to open Liquibase for integration and extensibiliy and I want a strong, stable API. Version 3.0 greatly expands the scope of how you can mold and shape liquibase, and I want to make sure that the APIs liquibase exposes are easy to use yet will support future features as well without breaking changes.</li>
+  <li>Documentation update. The <a href="http://web.archive.org/web/20130316021822/http://liquibase.org/">liquibase.org</a> website is a bit dated and the there are many holes in the documentation. I am going to update that with a new github-based site and ensure it is up to date with what is new in 3.0 (and things missed from previous releases)</li>
+  <li>Jira cleanup. <a href="http://web.archive.org/web/20130316021822/http://liquibase.jira.com/">http://liquibase.jira.com</a> has gotten to be a mess in 3.0 with many duplicated issues, issues that have already been resolved, simple things that can be fixed still in 3.0 mixed with larger changes that will have to go in 3.1+, etc. I need to go through the list to make sure simple and/or blocker bugs are resolved and things that can wait for 3.1 are pushed out.</li>
+  <li>Testing. I’ve primarily tested against Mysql, Oracle, SqlServer, HSQL, and H2. I need to make sure the other supported databases are working as well.</li>
+</ul>
+
+<p>My hope is that 3.0.0 beta represents a feature complete 3.0 version, but the final walk through of features, bugs and extension points will probably find some additional larger changes to make. My plan is to have a new beta roughly bi-weekly until the 3.0.0 release in early April. However, “it’s software, so it can do anything except ship on time”.</p>
+
+<h3 id="high-level-changes-in-30">High level changes in 3.0</h3>
+
+<ul>
+  <li>Dropped Java 1.5 support</li>
+  <li>Major changes in diff and snapshot log</li>
+  <li>Support for “catalogs” in addition to schemas</li>
+  <li>Separated “diff” and “snapshot” logic for better modularity</li>
+  <li>Extension support for LockService</li>
+  <li>Extension support for defining new DataTypes</li>
+  <li>Extension support for defining new snapshot DatabaseObjects</li>
+  <li>Extension support for defining new Snapshot log</li>
+  <li>Extension support for how to compare DatabaseObjects</li>
+  <li>Better extension support for changelog generation</li>
+  <li>More object types are snapshotted</li>
+  <li>Changes can provide metadata helpful for IDE and other integrations</li>
+  <li>Added ability for objects to control how they are serialized via the LiquibaseSerializable interface</li>
+  <li>Can define tablespace for liquibase tables</li>
+  <li>Performance improvements</li>
+  <li>Ability to specify sequences to read values from on <code class="highlighter-rouge">&lt;insert&gt;</code></li>
+  <li>Improve OSGi support</li>
+  <li>Support preconditions in formatted SQL</li>
+  <li>Maven supports generateChangeLog</li>
+  <li>Better support for case sensitive databases</li>
+  <li>API cleanup</li>
+  <li>Ability to SKIP columns in a CSV file</li>
+  <li>Improved Informix support</li>
+  <li>Support JDBC escape syntax in SQL</li>
+  <li>Added futureRollbackCountSQL</li>
+  <li>Support ${} params in formatted SQL</li>
+  <li>Many bug fixes</li>
+</ul>
+
+<h3 id="download">Download</h3>
+
+<p>As always, you can download the release from <a href="http://web.archive.org/web/20130316021822/http://liquibase.org/download">http://liquibase.org/download</a> and direct any comments or questions for <a href="http://web.archive.org/web/20130316021822/http://forum.liquibase.org/">http://forum.liquibase.org</a></p>
+:ET

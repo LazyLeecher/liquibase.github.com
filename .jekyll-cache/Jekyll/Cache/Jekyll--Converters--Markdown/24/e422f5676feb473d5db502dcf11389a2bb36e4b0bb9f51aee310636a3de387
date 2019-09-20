@@ -1,0 +1,8 @@
+I"û<h1 id="32-to-33-upgrade-guide">3.2 to 3.3 Upgrade Guide</h1>
+
+<p>For must Liquibase end users, Liquibase 3.3 is a drop-in replacement for Liquibase 3.2 version. <a href="v3_2_upgrade.html">3.1 to 3.2 upgrade guide</a></p>
+
+<h2 id="checksum-issues">Checksum issues</h2>
+
+<p>A bugfix in how Float values are handled can cause some checksums to return a different value, even though the changeSet did not change. Add the validCheckSum tag to any changeSets that are throwing unexpected validation errros.</p>
+:ET

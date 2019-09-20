@@ -1,0 +1,59 @@
+I"R<p>Liquibase 2.0 is all about 3rd party extension and integration, and to help kick that off, we are <a href="http://liquibase.jira.com/wiki/display/CONTRIB/Liquibase+Extension+Contest+2009">holding a contest</a>.</p>
+
+<p>Thanks to donations from <a href="http://www.atlassian.com">Atlassian</a> and <a href="http://oreilly.com">O’Reilly</a>, we have some great prizes for the winners</p>
+
+<h3 id="rules">Rules</h3>
+
+<ul>
+  <li>Your entry must embed or extend Liquibase</li>
+  <li>Extensions must be compatible with <a href="http://www.liquibase.org/2009/06/liquibase-20-milestone-1-released.html">Liquibase 2.0 (currently under construction)</a></li>
+  <li>Your plugin must be listed on the <a href="http://www.liquibase.org/2009/06/now-open-liquibase-extension-portal.html">Liquibase Extension Portal</a></li>
+  <li>You must announce your extension and your interest in submitting it to this contest on the Liquibase User Forum</li>
+  <li>There is no license restrictions on your plugin, although we prefer an open source license</li>
+</ul>
+
+<h3 id="prizes">Prizes</h3>
+
+<p>Grand Prize:</p>
+
+<ul>
+  <li>Your choice of 5 O’Reilly books, donated by O’Reilly</li>
+  <li>One copy of PostgreSQL</li>
+</ul>
+
+<p>Runner Up:</p>
+
+<ul>
+  <li>Atlassian laptop bag from Timbuk2 (US$150 value), donated by Atlassian</li>
+  <li>One copy of MySQL Community Edition</li>
+</ul>
+
+<p>5x Honorable Mentions:</p>
+
+<ul>
+  <li>Your choice of 1 O’Reilly book, donated by O’Reilly</li>
+  <li>One copy of JavaDB</li>
+</ul>
+
+<h3 id="judging">Judging</h3>
+
+<p>The winning plugins will be judged by lead developer Nathan Voxland on:</p>
+
+<ul>
+  <li>Usefulness</li>
+  <li>Creativity and Elegance</li>
+  <li>Completeness</li>
+  <li>Code quality and documentation</li>
+</ul>
+
+<h3 id="key-dates">Key Dates</h3>
+
+<ul>
+  <li>June 24th, 2009: Contest opens</li>
+  <li>August 31st, 2009, High Noon, US Central Time (GMT-5): Contest closes</li>
+  <li>September 15th, 2009: Winners Announced</li>
+</ul>
+
+<p>For more information, see the <a href="http://liquibase.jira.com/wiki/display/CONTRIB/Liquibase+Extension+Contest+2009">offical contest page</a></p>
+
+:ET

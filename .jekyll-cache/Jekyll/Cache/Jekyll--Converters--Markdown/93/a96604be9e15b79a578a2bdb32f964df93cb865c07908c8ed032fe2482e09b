@@ -1,0 +1,21 @@
+I"<<p>Liquibase 3.7.0 is now available from <a href="http://liquibase.org/download">liquibase.org/download</a> and through the Maven repositories. Questions or comments should be directed <a href="http://liquibase.org/community">to liquibase.org/community</a>.</p>
+
+<p>Version 3.7.0 is primarily a bugfix release, but there have been over 350 commits since 3.6.3, so TONS of good new things from both the community and Datical.</p>
+
+<h3 id="highlights-include">Highlights Include</h3>
+<ul>
+  <li>Improved support for PostgreSQL, DB2, MariaDB, MS SqlServer, Ingres, and Firebase</li>
+  <li>Support for not validated not-null constraints</li>
+  <li>Performance improvements</li>
+  <li>Changelog parameters can be set via environment variables</li>
+  <li>includeAll bugfixes</li>
+  <li>
+    <include> can filter by id, author, or labels
+</include>
+  </li>
+  <li>Allow disabling shouldRun in CDI</li>
+  <li>And much more</li>
+</ul>
+
+<p>Thanks to everyone who helped with <a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=13501">all these issues</a></p>
+:ET

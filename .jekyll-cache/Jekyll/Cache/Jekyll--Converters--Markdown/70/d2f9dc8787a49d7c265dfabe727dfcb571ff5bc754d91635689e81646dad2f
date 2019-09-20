@@ -1,0 +1,24 @@
+I"E<p>Liquibase 1.4.0 has been released. Major features include:</p>
+
+<ul>
+  <li>IntelliJ Plug-in Support</li>
+  <li>Added support for specifying schemas in change log</li>
+  <li>MaxDB/SAPDB Support</li>
+  <li>Refactored Code</li>
+  <li>Can specify data types as <code class="highlighter-rouge">java.sql.Types.*</code></li>
+  <li>Support for composite foreign keys</li>
+  <li>Improved Maven support</li>
+  <li>Bug Fixes</li>
+</ul>
+
+<p>Upgrading is simply a matter of replacing the liquibase.jar file. To take advantage of newer change log features, change your XSD declaration to:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;databasechangelog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.4"
+    xsi="http://www.w3.org/2001/XMLSchema-instance"
+    schemalocation="http://www.liquibase.org/xml/ns/dbchangelog/1.4
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.4.xsd"&gt;
+</code></pre></div></div>
+
+<p>Download Liquibase 1.4 from: <a href="http://www.liquibase.org/download.html">http://www.liquibase.org/download.html</a></p>
+
+:ET

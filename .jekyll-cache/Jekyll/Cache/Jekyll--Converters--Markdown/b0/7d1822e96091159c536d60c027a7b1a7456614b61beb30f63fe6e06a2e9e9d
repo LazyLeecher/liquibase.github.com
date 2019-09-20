@@ -1,0 +1,21 @@
+I"<p>Martin Fowler makes good points in his <a href="http://martinfowler.com/bliki/IncrementalMigration.html" target="_blank">Incremental Migration</a> Bliki post. Data migration is easy to push off or forget, and can often kill an otherwise great release–especially when valuable historical data gets lost due to a bad script.</p>
+
+<p>I think reason many people put off data migration scripts is because they mistakenly think that they are for release day only. In reality, however, data migration is needed throughout the development process including updating developer databases and migrating integration test data.</p>
+
+<p>Doing your data migrations incrementally and appending to your database change log on every refactoring will help you catch migration logic errors early and keep everyone’s databases in sync.</p>
+
+<p>To keep up with your database migration scripts, you need to use the update your test/code/test cycle to:</p>
+
+<ol>
+  <li>Write Test</li>
+  <li>Run Test</li>
+  <li>Code Change</li>
+  <li><em>Append database changes to <a href="https://www.liquibase.org/documentation/databasechangelog.html" target="_blank">change log</a></em></li>
+  <li><em>Run Liquibase to update database</em></li>
+  <li>Run Test, See Green</li>
+</ol>
+
+<p>Making no database changes outside of your change log script and dev cycle will ensure that no changes get forgotten and that there are no differences between what happened on the developer’s database and what happens on other developer’s and production databases.</p>
+
+<p>To integrate Liquibase into your build process, there are <a href="https://www.liquibase.org/documentation/ant/index.html" target="_blank">Ant</a>, and <a href="https://www.liquibase.org/documentation/maven/index.html" target="_blank">Maven</a> front-ends available. This will allow you to migrate your integration tests data sets before executing them and allow you to find errors in your database update logic with each run.<img src="http://feeds.feedburner.com/%7Er/liquibase/%7E4/329863436" alt="" width="1" height="1" /></p>
+:ET

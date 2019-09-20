@@ -1,0 +1,2 @@
+I"<p>Ten years ago, I started Liquibase to bring sanity to my database schema changes. At the time, I was working on a 3-tier Java web project. Ruby on Rails had Active Record Migrations and I asked, “Why can’t I have that for Java?” Since then, Liquibase has become the standard for database change management. We support 13 databases and have 24 extensions for other databases. (Hi, Teradata and Hana!!!) All of that progress is because of our amazing users, committers, and testers. We couldn’t have done it without you.</p>
+:ET

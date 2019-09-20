@@ -1,0 +1,3 @@
+I"q<p>Liquibase 3.1.1 has been released with a few bug fixes.
+The most important fixes reverts how <code class="highlighter-rouge">&lt;createProcedure&gt;</code> checksums are computed so they are compatible with 3.0 and fix the new <code class="highlighter-rouge">&lt;rowCount&gt;</code> and <code class="highlighter-rouge">&lt;tableIsEmpty&gt;</code> preconditions.</p>
+:ET

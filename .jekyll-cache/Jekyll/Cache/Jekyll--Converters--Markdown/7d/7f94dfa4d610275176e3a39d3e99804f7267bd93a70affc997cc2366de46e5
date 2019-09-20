@@ -1,0 +1,15 @@
+I"ÿ<p>For NetBeans users, there is a Liquibase plugin now available.</p>
+
+<p>The current, 0.2 version implements rudimentary support and concentrates on the most needed functionality.</p>
+
+<p>Features:</p>
+
+<ul>
+  <li>Database connections stored in the Database Explorer plugin, so the developer doesnâ€™t have to separately maintain the registry of connections.</li>
+  <li>Executing a changeset by simply selecting it in the File or Project explorer windows and call the execution from a context menu action. The database connection can be selected during the execution</li>
+  <li>A formatted log is displayed in the Output Window about the execution of the changeset, so the developer is properly informed if the changeset execution has failed.</li>
+  <li>Custom icon for the Liquibase changeset files, so they can better distinguished from the ordinary files.</li>
+</ul>
+
+<p>More information: <a href="http://plugins.netbeans.org/plugin/38564/liquorice-core">http://plugins.netbeans.org/plugin/38564/liquorice-core</a></p>
+:ET

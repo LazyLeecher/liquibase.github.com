@@ -1,0 +1,29 @@
+I"E<h1 id="spring-integration">Spring Integration</h1>
+
+<p>Liquibase can be run in a <a href="http://www.springframework.org">Spring</a> environment by declaring a liquibase.spring.SpringLiquibase bean.</p>
+
+<h2 id="example">Example</h2>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"liquibase"</span> <span class="na">class=</span><span class="s">"liquibase.integration.spring.SpringLiquibase"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dataSource"</span> <span class="na">ref=</span><span class="s">"myDataSource"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"changeLog"</span> <span class="na">value=</span><span class="s">"classpath:db-changelog.xml"</span> <span class="nt">/&gt;</span>
+
+      <span class="c">&lt;!--
+      contexts specifies the runtime contexts to use.
+      --&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"contexts"</span> <span class="na">value=</span><span class="s">"test, production"</span> <span class="nt">/&gt;</span>
+ <span class="nt">&lt;/bean&gt;</span></code></pre></figure>
+
+<h2 id="available-attributes">Available Attributes</h2>
+
+<ul>
+  <li>beanName</li>
+  <li>changeLog</li>
+  <li>contexts</li>
+  <li>dataSource</li>
+  <li>defaultSchema</li>
+  <li>dropFirst <strong>since 2.0.2</strong></li>
+  <li>parameters</li>
+  <li>resourceLoader</li>
+</ul>
+:ET

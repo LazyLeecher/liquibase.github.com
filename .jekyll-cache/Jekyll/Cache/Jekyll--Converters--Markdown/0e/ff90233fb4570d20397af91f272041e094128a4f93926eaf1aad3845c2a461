@@ -1,0 +1,38 @@
+I"u	<p>Liquibase 1.3 has been released. Major features include:</p>
+
+<ul>
+  <li>Added <a href="http://www.liquibase.org/manual/latest/custom_change.html"><code class="highlighter-rouge">custom</code> change</a></li>
+  <li>Added <a href="http://www.liquibase.org/manual/latest/execute_command_change.html"><code class="highlighter-rouge">executeCommand</code> change</a></li>
+  <li>Added <a href="http://www.liquibase.org/manual/latest/create_procedure_change.html"><code class="highlighter-rouge">createProcedure</code> change</a></li>
+  <li>Added <a href="http://www.liquibase.org/manual/latest/preconditions.html">sqlCheck precondition</a></li>
+  <li>Added <a href="http://www.liquibase.org/manual/latest/dbdoc.html">dbdoc documentation generator</a></li>
+  <li>Added <a href="http://www.liquibase.org/manual/latest/spring_migrator.html">Spring migrator</a></li>
+  <li>Added tablespace support to createTable, createIndex, addPrimaryKey, and addUniqueConstraint</li>
+  <li>Added defaultCascade attribute to addForeignKeyConstraint</li>
+  <li>Can have multiple comma-separated <a href="http://www.liquibase.org/manual/latest/contexts.html">contexts</a> per change set</li>
+  <li>Database Diff checks column types and nullability</li>
+  <li>DiffChangeLog will write to a file specified with the <code class="highlighter-rouge">--changeLog</code> flag</li>
+  <li>Database Diff checks views</li>
+  <li>Added ability to control strippig of comments and splitting of lines in  tag</li>
+  <li>Added Postgres support to auto-increment related refactorings</li>
+</ul>
+
+<p>Many bugs have been fixed as well, including:</p>
+
+<ul>
+  <li>Restored Java 6 Support</li>
+  <li>Absolute path changelogs are handled correctly on Windows</li>
+  <li>Other bug fixes</li>
+</ul>
+
+<p>Upgrading is simply a matter of replacing the liquibase.jar file. To take advantage of newer change log features, change your XSD declaration to:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;databasechangelog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.3";
+    xsi="http://www.w3.org/2001/XMLSchema-instance";
+    schemalocation="http://www.liquibase.org/xml/ns/dbchangelog/1.3
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.3.xsd"&gt;
+</code></pre></div></div>
+
+<p>Download Liquibase 1.3 from: <a href="http://www.liquibase.org/download.html">http://www.liquibase.org/download.html</a></p>
+
+:ET

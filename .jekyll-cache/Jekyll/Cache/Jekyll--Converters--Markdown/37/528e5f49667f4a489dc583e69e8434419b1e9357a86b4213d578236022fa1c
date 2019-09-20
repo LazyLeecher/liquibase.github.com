@@ -1,0 +1,45 @@
+I"_<h1 id="user-and-developer-community">User and Developer Community</h1>
+
+<p><strong>Have Question On How To Use Liquibase?</strong></p>
+
+<p>Most questions on general Liquibase usage are best handled on Stack Overflow using the “liquibase” tag <a href="http://stackoverflow.com/tags/liquibase">http://stackoverflow.com/tags/liquibase</a>.</p>
+
+<p><strong>Have A Feature Idea? Did You Find A Bug In Liquibase?</strong></p>
+
+<p>If it is a bug in the main Liquibase library, log it in <a href="http://liquibase.jira.com/browse/CORE">Liquibase Jira</a>.</p>
+
+<p>If it is a bug with an extension, log it issues section of the extension’s github page.
+For example <a href="https://github.com/liquibase/liquibase-hibernate/issues">https://github.com/liquibase/liquibase-hibernate/issues</a> or <a href="https://github.com/liquibase/liquibase-oracle/issues">https://github.com/liquibase/liquibase-oracle/issues</a>.</p>
+
+<p>All Liquibase-managed extensions can be found in the <a href="https://github.com/liquibase">Liquibase GitHub group</a></p>
+
+<p><strong>Looking for Liquibase News?</strong></p>
+
+<p>Liquibase release announcements as well as general project news and articles are cross posted to the Liquibase blog at <a href="http://www.liquibase.org/blog">http://www.liquibase.org/blog</a> and the mailing list.</p>
+
+<p>To subscribe to the mailing list, use the “Announcements” form to your left.</p>
+
+<p><a href="https://twitter.com/liquibase" class="twitter-follow-button" data-show-count="false">@liquibase</a></p>
+
+<p><strong>Looking for the Liquibase Source Code?</strong></p>
+
+<p>The Liquibase source is hosted at <a href="https://github.com/liquibase/liquibase">https://github.com/liquibase/liquibase</a>. Code submissions should go through the standard GitHub pull request system.</p>
+
+<p>For more information, see the <a href="../development/index.html">developer documentation</a></p>
+
+<p><strong>Looking To Discussions Beyond The Scope Of Stack Overflow?</strong></p>
+
+<ul>
+  <li><a href="http://forum.liquibase.org/#Forum/liquibase-users">Liquibase Users</a> - for topics related to using Liquibase and writing extensions.</li>
+  <li><a href="http://forum.liquibase.org/#Forum/liquibase-development">Liquibase Developers</a> - for topics related to working on the Liquibase codebase.</li>
+</ul>
+
+<p><strong>Need To Go Right To The Top?</strong></p>
+
+<p>You can always contact Nathan Voxland, Liquibase Benevolent Dictator for Life at <a href="mailto:nathan.voxland@liquibase.org">nathan.voxland@liquibase.org</a>
+or <a href="https://twitter.com/nvoxland" class="twitter-follow-button" data-show-count="false">@nvoxland</a></p>
+
+<p><strong>Looking To Pay For Support?</strong></p>
+
+<p>Commercial training and support is available from <a href="http://www.datical.com/liquibase/" target="_blank" onclick="trackOutboundLink(this, 'Datical', 'Liquibase RFI'); return false;">datical.com</a></p>
+:ET

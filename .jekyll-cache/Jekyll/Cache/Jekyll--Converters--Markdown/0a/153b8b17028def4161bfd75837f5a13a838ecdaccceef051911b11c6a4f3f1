@@ -1,0 +1,20 @@
+I"�<p>Liquibase 3.1.1 has been released with a few bug fixes.
+The most important fixes reverts how <code class="highlighter-rouge">&lt;createProcedure&gt;</code> checksums are computed so they are compatible with 3.0 and fix the new <code class="highlighter-rouge">&lt;rowCount&gt;</code> and <code class="highlighter-rouge">&lt;tableIsEmpty&gt;</code> preconditions.</p>
+
+<p>The newest version can be download from <a href="http://liquibase.org/download">liquibase.org/download</a></p>
+
+<h3 id="change-log">Change Log</h3>
+
+<ul>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1704">CORE-1704</a> - Checksum errors for changeSets with createProcedure in 3.1.0 vs 3.0.x</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1707">CORE-1707</a> - TableRowCountGenerator shouldn’t pass tableName as catalogName</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1710">CORE-1710</a> - Oracle: NUMBER data type size specification is deployed with a precision specifier even though precision isn’t specified in the change log</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1711">CORE-1711</a> - rowCount doesn’t work if only the tableName is given</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1713">CORE-1713</a> - liquibase.precondition.core.ForeignKeyExistsPrecondition exception</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1715">CORE-1715</a> - 2 -&gt; 3.1 migration, 3.1 errors if there are single quotes in comments</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1709">CORE-1709</a> - generateChangeLog returns tables created by Materialized Views as standard tables</li>
+</ul>
+
+<p><a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=11460">Complete Change Log</a></p>
+
+:ET

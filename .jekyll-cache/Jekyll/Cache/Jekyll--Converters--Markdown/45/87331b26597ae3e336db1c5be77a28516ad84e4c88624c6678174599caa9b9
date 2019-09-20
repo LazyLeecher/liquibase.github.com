@@ -1,0 +1,27 @@
+I"á<p>Liquibase 1.8.0 has been released and can be downloaded from <a href="http://www.liquibase.org/download">http://www.liquibase.org/download</a>.</p>
+
+<p>Major changes include:</p>
+<h4 id="improvements-to-preconditions">Improvements to <a href="http://www.liquibase.org/manual/preconditions">preconditions</a></h4>
+
+<ul>
+  <li>onFail and onError controls</li>
+  <li>Several new precondition checks</li>
+  <li>Custom preconditions can be passed parameters</li>
+</ul>
+
+<h4 id="sqlite-support">SQLite Support</h4>
+
+<ul>
+  <li><a href="http://www.liquibase.org/manual/contexts">Context</a> checking is now case insensitive</li>
+  <li>Specifying a column as autoincrement for a non-autoincrement table does not cause an error</li>
+  <li>End delimiter can be specified with <a href="http://www.liquibase.org/manual/custom_sql">sql changes</a></li>
+  <li><a href="http://www.liquibase.org/manual/create_index">Indexes</a> can be created as unique</li>
+  <li>Required attributes for all changes are checked before execution</li>
+  <li><a href="http://www.liquibase.org/manual/command_line">Command line migrator</a> return codes are better</li>
+  <li>Many more bug fixes</li>
+</ul>
+
+<p>The Maven repository will be updated over the next couple days. The Grails and IntelliJ plug-ins are available immediately.</p>
+
+<p>I would also like to thank everyone who has helped with this release by submitting bug reports, feature requests, and patches.  They are all greatly appreciated, so please keep them coming.</p>
+:ET

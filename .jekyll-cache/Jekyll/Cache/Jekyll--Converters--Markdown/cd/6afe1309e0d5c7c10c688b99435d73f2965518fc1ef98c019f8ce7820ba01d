@@ -1,0 +1,3 @@
+I"M<p>Liquibase has always focused mainly on “standard” SQL databases, but we are looking to improving support for NoSQL databases like Cassandra, MongoDB, Hadoop and others.
+We’d also like to make sure our support for databases like DB2 on iSeries and System z as well as Redshift, Azure SQL Server, Vertica, Greenplumb etc.</p>
+:ET

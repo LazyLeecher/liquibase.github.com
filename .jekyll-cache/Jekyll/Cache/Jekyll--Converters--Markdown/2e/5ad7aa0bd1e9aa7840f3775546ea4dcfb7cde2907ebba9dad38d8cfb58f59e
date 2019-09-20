@@ -1,0 +1,63 @@
+I"0<h1 id="liquibase-tutorial-getting-started-using-liquibase-functions">Liquibase Tutorial: Getting Started Using Liquibase Functions</h1>
+
+<h2 id="overview">Overview</h2>
+<p>This tutorial builds on the setup that is described in the <a href="../quickstart.html">Quick Start</a>.</p>
+
+<h2 id="step-1-create-a-changelog-file">Step 1: Create a Changelog File:</h2>
+
+<p>The <a href="documentation/databasechangelog.html">database changelog file</a> is where all database changes are listed. Create a file called <code class="explicit">myChangeLog.xml</code> that contains the following:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+
+<span class="nt">&lt;databaseChangeLog</span>
+  <span class="na">xmlns=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog"</span>
+  <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;/databaseChangeLog&gt;</span></code></pre></figure>
+
+<h2 id="step-2-add-a-change-set">Step 2: Add a Change Set</h2>
+
+<p>Each <a href="documentation/changeset.html">change set</a> is uniquely identified by an “id” attribute and an “author” attribute. These two tags, along with the name and package of the change log file uniquely identify the change. If only an “id” needed to be specified, it would be too easy to accidentally duplicate them, especially when dealing with multiple developers and code branches. Including an “author” attribute minimizes the chances of duplications.</p>
+
+<p>Think of each change set as an atomic change that you want to apply to your database. It’s usually best to include just one change in your change set, but more are allowed and can make sense if you are inserting multiple rows that should be added as a single transaction. Liquibase will attempt to run each change set as a single transaction, but many databases will silently commit and resume transactions for certain commands (create table, drop table, etc.)</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+
+<span class="nt">&lt;databaseChangeLog</span>
+  <span class="na">xmlns=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog"</span>
+  <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">author=</span><span class="s">"bob"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"department"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;constraints</span> <span class="na">primaryKey=</span><span class="s">"true"</span> <span class="na">nullable=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/column&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">type=</span><span class="s">"varchar(50)"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;constraints</span> <span class="na">nullable=</span><span class="s">"false"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/column&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"active"</span> <span class="na">type=</span><span class="s">"boolean"</span> <span class="na">defaultValueBoolean=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+
+<span class="nt">&lt;/databaseChangeLog&gt;</span></code></pre></figure>
+
+<h2 id="step-3-run-the-change-set">Step 3: Run the Change Set</h2>
+
+<p>We are now ready to deploy our first script! Open a terminal and run <code class="explicit">./liquibase update</code> if on a UNIX system or <code class="explicit">liquibase.bat update</code> if on Windows.</p>
+
+<h2 id="step-4-check-your-database">Step 4: Check Your Database</h2>
+
+<p>Your database now contains a table called “department”. To inpsect the H2 database that is a part of the tutorial, open a terminal, navigate to the folder that you extracted the Liquibase <code class="explicit">*.zip</code> or the <code class="explicit">*.tar.gz</code> to and run <code class="explicit">java -jar h2-1.4.199.jar</code>.<strong>Note: enter the specific version of the h2*.jar that you downloaded!</strong> Enter the JDBC URL, User Name, and Password from the <code class="explicit">liquibase.properties</code> file you created per the <a href="../quickstart.html">tutorial setup</a>. Notice that two other tables are created as well: “databasechangelog” and “databasechangeloglock”. The databasechangelog table contains a list of all the changes that have been run against the database. The databasechangeloglock table is used to make sure two machines don’t attempt to modify the database at the same time.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<ul>
+  <li>This quick-start guide is designed to quickly introduce you to Liquibase. For a full description of all its capabilities, see the <a href="http://www.liquibase.org/documentation/index.html">Liquibase Manual</a>, read <a href="https://www.liquibase.org/bestpractices.html">the best practices</a> and visit the <a href="http://www.liquibase.org/community/index.html">forums</a>.</li>
+  <li>If you have an existing project you are looking to add Liquibase to, visit the <a href="https://www.liquibase.org/documentation/existing_project.html">Existing Project</a> page.</li>
+  <li>If you are interested in commercial support, training, or consulting, consider <a href="https://download.liquibase.org" target="_blank" onclick="trackOutboundLink(this, 'Datical', 'Liquibase RFI'); return false">Liquibase Pro</a>.</li>
+</ul>
+:ET

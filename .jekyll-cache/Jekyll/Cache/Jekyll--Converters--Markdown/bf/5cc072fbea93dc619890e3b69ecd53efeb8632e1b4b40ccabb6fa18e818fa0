@@ -1,0 +1,34 @@
+I"
+<p>After far too long, a new version of the Liquibase-Hibernate extension has been released!</p>
+
+<p><a title="Downloads" href="http://github.com/liquibase/liquibase-hibernate/releases">Downloads</a>, <a title="documentation" href="http://github.com/liquibase/liquibase-hibernate/wiki">documentation</a>, and <a title="issues" href="http://github.com/liquibase/liquibase-hibernate/issues">issue tracking</a> is hosted at <a title="github.com/liquibase/liquibase-hibernate" href="http://github.com/liquibase/liquibase-hibernate">github.com/liquibase/liquibase-hibernate</a>. The extension is also available through Maven with group org.liquibase.ext, artifacts liquibase-hibernate3 and liquibase-hibernate4.</p>
+
+<h3 id="liquibase-30-support">Liquibase 3.0 Support</h3>
+
+<p>If you’ve been stuck on Liquibase 2.0 because of the old hibernate integration, the wait is over. The extension requires Liquibase 3.0.6+, so make sure you are on the newest version of Liquibase.</p>
+
+<h3 id="hibernate-4-support">Hibernate 4 Support</h3>
+
+<p>There are two separate jar files available: liquibase-hibernate3.jar and liquibase-hibernate4.jar. Use the version that corresponds to your Hibernate version</p>
+
+<h3 id="ejb3-configuration-support">EJB3 Configuration Support</h3>
+
+<p>If you are using the EJB3-style persistence.xml file, you can now use a database url of “<em>hibernate:ejb3:yourPersistenceUnit</em>”.</p>
+
+<h3 id="spring-configuration-support">Spring Configuration Support</h3>
+
+<p>If your Hibernate configuration is specified in Spring, you can now use a database of “<em>hibernate:spring:your/path/spring.xml?bean=sessionFactory</em>” to pull the Hibernate configuration from your spring context.</p>
+
+<h3 id="programmatic-configuration-support">Programmatic Configuration Support</h3>
+
+<p>You can now create your Hibernate configurations dynamically by implementing <em>liquibase.ext.hibernate.customfactory.CustomClassicConfigurationFactory</em> or  <em>liquibase.ext.hibernate.customfactory.CustomEjb3ConfigurationFactory</em> and reference the classes in your database url. For example, “<em>hibernate:classic:com.example.YourFactory</em>” or “<em>hibernate:ejb3:com.example.YourFactory</em>”</p>
+
+<h3 id="upgrade-notes">Upgrade Notes:</h3>
+
+<ul>
+  <li>The standard database url has changed from “hibernate:path/to/your/file.xml” to “hibernate:classic:path/to/your/file.xml”</li>
+  <li>Requires Liquibase 3.0.6+</li>
+  <li>Jar name has changed from liquibase-hibernate.jar to liquibase-hibernate3.jar (or liquibase-hibernate4.jar)</li>
+</ul>
+
+:ET

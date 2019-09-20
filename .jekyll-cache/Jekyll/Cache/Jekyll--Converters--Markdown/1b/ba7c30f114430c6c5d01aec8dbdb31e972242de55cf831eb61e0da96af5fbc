@@ -1,0 +1,66 @@
+I"�<h1 id="using-jira">Using Jira</h1>
+
+<p>The core Liquibase project uses <a href="http://liquibase.jira.com/browse/CORE">liquibase.jira.com</a> as its bug and feature tracker.</p>
+
+<p>If you have a bug or feature that you are working on or would like to have worked on, it should have an issue logged.</p>
+
+<h2 id="jira-fields">Jira Fields</h2>
+
+<p>We limited down the available fields in Jira to a small but generally required set. We use them as follows:</p>
+
+<p><strong>Title/Summary</strong> is the one line description of the feature or bug.</p>
+
+<p>Choose a title that is descriptive and to the point, keeping in mind that it will appear in the Jira release notes and be used by others to know what is in a release.</p>
+
+<p><strong>Issue Type</strong> contains just three options:</p>
+<ol>
+  <li>“Bug” for things that cause errors or do not work as expected</li>
+  <li>“Feature” for brand new features</li>
+  <li>“Improvement” for new functionality on existing features</li>
+</ol>
+
+<p><strong>Priority</strong> contains four options:</p>
+<ol>
+  <li>“Blocker” for bugs and missing features that are stopping you from using Liquibase</li>
+  <li>“Major” for bugs and missing features that interfere with your ability to use Liquibase, but you are able to work around the problem</li>
+  <li>“Nice to Have” for bugs and missing features that would be nice to have fixed or changed, but do not interfere with your usage</li>
+  <li>“Trivial” for bugs and missing features that are inconsequential.</li>
+</ol>
+
+<p><strong>Affects Version</strong> should contain the version in which you saw the bug the most recent version if it is a feature request.</p>
+
+<p><strong>Fix Version</strong> should be set to the version(s) in which the change is going to be made.
+Normally this will be the next upcoming version, but if the change needs to be backported to previous release families specify both the current next version and all backported versions.</p>
+
+<p>For example, if 3.1.3 is the version under development, but a bug needs to be fixed in the upcoming 3.0.4 version as well, set the Fix Version to “3.1.3, 3.0.4”.</p>
+
+<p>This should not be set until it has been determined that the issue will be fixed in a given release, either because you or someone else is actually going to fix it in that time frame.</p>
+
+<p><strong>Environment</strong> should describe your setup for a bug or the setup improved with a feature request. Include things like database type and version, operating system, and anything else that seems relevant to diagnosing and/or reproducing the issue.</p>
+
+<p><strong>Description</strong> should include enough information that someone else could reproduce your bug or understand the feature you want added. Include reproduction steps, impact, logs, and anything else that would be of value.</p>
+
+<h2 id="audiences">Audiences</h2>
+
+<p>There are many different usages and audiences of issues entered in Jira. Remember to keep these people in mind when creating and working with Jira issues:</p>
+
+<ol>
+  <li><strong>People looking through the Jira backlog looking for something to fix</strong> There are often lots of issues to chose from and if your issue is vague or incomplete there is a good chance it will be skipped over.</li>
+  <li><strong>The person fixing the bug</strong> Make sure you are putting yourself in their shoes and thinking through what they will need. If you have done some troubleshooting or debugging and have any information that will make their job easier, make sure to include it.</li>
+  <li><strong>Others that are seeing a similar issue or want a similar feature</strong> Describe your bug or feature well enough that somebody else running into it will find your issue rather than creating a duplicate or variation. Not only does duplicates leads to confusion for everyone, but we lose out on the chance to collaborate on a solution.</li>
+  <li><strong>Readers of the release notes</strong> For each release, a link to the generated Jira release notes is made available. Make sure your title makes obvious what was changed.</li>
+</ol>
+
+<h2 id="jira-workflow">Jira Workflow</h2>
+
+<p>Liquibase uses “Open”, “In Progress” and “Awaiting Merge” and “Closed” issues. We don’t differentiate between Open vs. Reopened or Closed vs. Resolved.</p>
+
+<p>All new issues will be created as “Open”. When anyone begins working on an issue, they should assign it themselves and change the status to “In Progress”. If it turns out that they will not actually resolve the issue, they will unassign it and set the status back to “Open”.</p>
+
+<p>When the fix or feature is “done” and ready to bring into the main codebase, the issue moves to “Awaiting Merge”. At that point, the developer should create a GitHub pull request and reference the pull request in the Jira comments.</p>
+
+<p>If the pull request is accepted, the issue will be changed to “closed”. If the pull request is rejected, discussion will normally happen within the pull request interface until it is either accepted or given up on at which case the issue status will go back to “Open”.</p>
+
+<p>See the <a href="contribute.html">how to contribute</a> documentation for more information on pull requests.</p>
+
+:ET

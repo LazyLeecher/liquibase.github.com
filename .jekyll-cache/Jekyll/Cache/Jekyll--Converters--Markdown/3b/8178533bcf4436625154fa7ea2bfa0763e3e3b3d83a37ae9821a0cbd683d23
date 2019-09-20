@@ -1,0 +1,30 @@
+I"å<p>It is Liquibase 1.0â€™s first birthday, but you get the gift: Liquibase 1.7.0 is now available.</p>
+
+<p>Major changes include:</p>
+
+<ul>
+  <li>
+    <p>Added <a href="http://www.liquibase.org/manual/load_data">loadData change</a> which allows importing of data from CSV files</p>
+  </li>
+  <li>Added support for <a href="http://www.liquibase.org/manual/changelog_parameters">changelog parameters</a> for more dynamic and flexible change logs</li>
+  <li>
+    <p>Allow <a href="http://www.liquibase.org/manual/preconditions">preconditions</a> in changeSet tags to act as sanity checks during a database update</p>
+  </li>
+  <li>Can export data with <a href="http://www.liquibase.org/manual/generating_changelogs">generateChangeLog</a></li>
+  <li>
+    <p>Added markNextChangeSetRan command</p>
+  </li>
+  <li>
+    <p>Added validCheckSum tag to <a href="http://www.liquibase.org/manual/changeset">changeSet</a></p>
+  </li>
+  <li>
+    <p>Can use any refactoring tags or reference previous changeSets inside a <a href="http://www.liquibase.org/manual/changeset#rollback_tag">rollback tag</a></p>
+  </li>
+  <li>Allow <a href="http://www.liquibase.org/manual/preconditions">custom preconditions</a></li>
+  <li>RowMapper interface is now public</li>
+  <li>Misc bug fixes</li>
+</ul>
+
+<p>The core library can be downloaded from <a href="http://www.liquibase.org/download">http://www.liquibase.org/download</a> while the Maven, Grails, and IntelliJ plug-ins can be installed from their respective plug-in managers.</p>
+
+:ET

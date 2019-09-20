@@ -1,0 +1,13 @@
+I"ˆ<p>2.0.4 has been released. This is primarily a bug fix release during the main development on 3.0, but does include a few  enhancements as well.</p>
+
+<p>Download from <a href="http://liquibase.org/download">http://liquibase.org/download</a></p>
+
+<h3 id="new-features">New features:</h3>
+
+<ul>
+  <li>LoadUpdate support for H2</li>
+  <li>Support ${} params in sql files</li>
+  <li>Ability to load blob/clob data from files</li>
+  <li>Full release notes: <a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=10160">https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=10160</a></li>
+</ul>
+:ET

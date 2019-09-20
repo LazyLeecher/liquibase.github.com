@@ -1,0 +1,85 @@
+I"�)<h1 id="generating-change-logs">Generating Change Logs</h1>
+
+<p>When starting to use Liquibase on an existing database, it is often useful, particularly for testing, to have a way to generate the change log to create the current database schema. Liquibase allows you to do this with the “generateChangeLog” <a href="command_line.html">command_line</a> command.</p>
+
+<p>Note that this command currently has some limitations. It does not export the following types of objects:</p>
+
+<ul>
+  <li>Stored procedures, functions, packages</li>
+  <li>Triggers</li>
+</ul>
+
+<h2 id="example">Example</h2>
+
+<figure class="highlight"><pre><code class="language-bat" data-lang="bat"><span class="kd">liquibase</span> <span class="o">-</span><span class="na">-driver</span><span class="o">=</span><span class="kd">oracle</span>.jdbc.OracleDriver \
+      <span class="o">-</span><span class="na">-classpath</span><span class="o">=</span>\path\to\classes:jdbcdriver.jar \
+      <span class="o">-</span><span class="na">-changeLogFile</span><span class="o">=</span><span class="kd">com</span><span class="na">/example/db</span>.changelog.xml \
+      <span class="o">-</span><span class="na">-url</span><span class="o">=</span><span class="s2">"jdbc:oracle:thin:@localhost:1521:XE"</span> \
+      <span class="o">-</span><span class="na">-username</span><span class="o">=</span><span class="kd">scott</span> \
+      <span class="o">-</span><span class="na">-password</span><span class="o">=</span><span class="kd">tiger</span> \
+      <span class="kd">generateChangeLog</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;databaseChangeLog</span>
+    <span class="na">xmlns=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog/1.1"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog/1.1
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">name=</span><span class="s">"BONUS"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"ENAME"</span> <span class="na">type=</span><span class="s">"VARCHAR2(10,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"JOB"</span> <span class="na">type=</span><span class="s">"VARCHAR2(9,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"SAL"</span> <span class="na">type=</span><span class="s">"NUMBER(22,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"COMM"</span> <span class="na">type=</span><span class="s">"NUMBER(22,0)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-2"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">name=</span><span class="s">"DEPT"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"DEPTNO"</span> <span class="na">type=</span><span class="s">"NUMBER(2,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"DNAME"</span> <span class="na">type=</span><span class="s">"VARCHAR2(14,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"LOC"</span> <span class="na">type=</span><span class="s">"VARCHAR2(13,0)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-3"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">name=</span><span class="s">"EMP"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"EMPNO"</span> <span class="na">type=</span><span class="s">"NUMBER(4,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"ENAME"</span> <span class="na">type=</span><span class="s">"VARCHAR2(10,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"JOB"</span> <span class="na">type=</span><span class="s">"VARCHAR2(9,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"MGR"</span> <span class="na">type=</span><span class="s">"NUMBER(4,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"HIREDATE"</span> <span class="na">type=</span><span class="s">"DATE(7,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"SAL"</span> <span class="na">type=</span><span class="s">"NUMBER(7,2)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"COMM"</span> <span class="na">type=</span><span class="s">"NUMBER(7,2)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"DEPTNO"</span> <span class="na">type=</span><span class="s">"NUMBER(2,0)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">name=</span><span class="s">"SALGRADE"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"GRADE"</span> <span class="na">type=</span><span class="s">"NUMBER(22,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"LOSAL"</span> <span class="na">type=</span><span class="s">"NUMBER(22,0)"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"HISAL"</span> <span class="na">type=</span><span class="s">"NUMBER(22,0)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-5"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;addForeignKeyConstraint</span> <span class="na">baseColumnNames=</span><span class="s">"DEPTNO"</span>
+            <span class="na">baseTableName=</span><span class="s">"DEPT"</span> <span class="na">constraintName=</span><span class="s">"FK_NAME"</span>
+            <span class="na">referencedColumnNames=</span><span class="s">"DEPTNO"</span> <span class="na">referencedTableName=</span><span class="s">"EMP"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createIndex</span> <span class="na">indexName=</span><span class="s">"PK_DEPT"</span> <span class="na">tableName=</span><span class="s">"DEPT"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"DEPTNO"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createIndex&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-7"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createIndex</span> <span class="na">indexName=</span><span class="s">"PK_EMP"</span> <span class="na">tableName=</span><span class="s">"EMP"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"EMPNO"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createIndex&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;addPrimaryKey</span> <span class="na">columnNames=</span><span class="s">"DEPTNO"</span> <span class="na">tableName=</span><span class="s">"DEPT"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185214997195-9"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;addPrimaryKey</span> <span class="na">columnNames=</span><span class="s">"EMPNO"</span> <span class="na">tableName=</span><span class="s">"EMP"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+<span class="nt">&lt;/databaseChangeLog&gt;</span></code></pre></figure>
+
+:ET

@@ -1,0 +1,34 @@
+I"¦<h1 id="liquibase-for-relase-managers">Liquibase for Relase Managers</h1>
+
+<h3 id="prepare-for-deployment-problems">Prepare for deployment problems</h3>
+
+<p>Releases donâ€™t always go as planned, and Liquibase helps you ensure contingency plans are correct before each release. As you near a release, besides checking the updateSql output, you can also run <a href="documentation/rollback.html">futureRollbackSql</a> which will output the SQL needed to bring a fully updated database back to the current state.</p>
+
+<h3 id="no-change-is-forgotten">No change is forgotten</h3>
+
+<p>Liquibase <a href="documentation/databasechangelog.html">tracks which changelog statements</a> have run against each database, so you no longer have to manually track what statements have been run against each database and which have not.</p>
+
+<h3 id="sanity-checks">Sanity checks</h3>
+
+<p>Liquibase ships with several tools you can use to make sure changes are being applied correctly, check current database state, and that nobody is sneaking in changes out of process.</p>
+
+<ul>
+  <li>The status and validate commands report on what changeSets have not yet been ran and checks the changelog for errors.</li>
+  <li>The <a href="/documentation/diff.html">diff</a> command reports on differences between databases to ensure that two fully updated databases are truly identical</li>
+  <li>The <a href="/documentation/dbdoc.html">dbdoc</a> command generates documentation on the current database structure and its changes over time</li>
+</ul>
+
+<h3 id="enterprise-features-with-datical">Enterprise features with Datical</h3>
+
+<p>Beyond all the standard Liquibase functionality, Datical lets you</p>
+
+<ul>
+  <li><a href="http://www.datical.com/product/validation-intelligence/">Automate SQL reviews</a> against business rules</li>
+  <li>Simulate deployments to <a href="http://www.datical.com/product/validation-intelligence/">forecast potential errors</a></li>
+  <li><a href="http://www.datical.com/product/management-intelligence/">Know the deployment status</a> of every schema in the database</li>
+</ul>
+
+<hr />
+
+<p>Liquibase for <a href="/dba.html">DBAs</a> | <a href="/qa.html">QA</a> | <a href="/developer.html">Developers</a></p>
+:ET

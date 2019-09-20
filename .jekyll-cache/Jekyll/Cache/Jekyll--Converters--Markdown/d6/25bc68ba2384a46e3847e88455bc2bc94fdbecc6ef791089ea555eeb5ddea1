@@ -1,0 +1,2 @@
+I"Ø<p>As part of re-evaluating the Liquibase APIs as part of the 2.0 codebase, I started an experimental .Net implementation to see what changes would need to be incorporated into the regular codebase to produce a liquibase.dll with as new little code as possible. I have the code to the point that I know it would work, and can see the direction it would need to go, but I will not have time to fully implement it for quite some time. That is where you could come inâ€¦</p>
+:ET

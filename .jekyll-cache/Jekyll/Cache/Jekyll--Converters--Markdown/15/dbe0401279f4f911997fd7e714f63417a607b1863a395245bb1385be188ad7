@@ -1,0 +1,16 @@
+I"Ë<p>The Liquibase hibernate extension has been updated for both hibernate 3 and hibernate 4.</p>
+
+<p>Major changes include:</p>
+
+<ul>
+  <li>Support for Liquibase 3.1.1</li>
+  <li>Support for Hibernate 4.3+ <em>NOTE: Due to hibernate incompatibilities, Hibernate 4.0-4.2 requires the use of the liquibase-hibernate4.2 extension</em></li>
+  <li>Support for compound primary keys</li>
+  <li>Improved support for detecting auto-increment columns</li>
+</ul>
+
+<p>See <a href="https://github.com/liquibase/liquibase-hibernate">https://github.com/liquibase/liquibase-hibernate</a> for more information and to download the 3.3 release.</p>
+
+<p>The new versions are also working their way through the maven mirror system</p>
+
+:ET

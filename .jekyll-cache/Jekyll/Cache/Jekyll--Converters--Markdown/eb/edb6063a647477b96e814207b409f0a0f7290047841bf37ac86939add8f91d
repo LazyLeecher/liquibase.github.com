@@ -1,0 +1,11 @@
+I"\<h1 id="other-changelog-formats">Other Changelog formats</h1>
+
+<p>Beyond the built in <a href="xml_format.html">XML</a>, <a href="yaml_format.html">YAML</a>, <a href="json_format.html">JSON</a> and <a href="sql_format.html">SQL</a> changelog formats,
+the Liquibase extension system allows you to create changelog files in whatever format you like.</p>
+
+<p>Additional community-managed formats include:</p>
+<ul>
+  <li><a href="https://github.com/tlberglund/groovy-liquibase">Groovy Liquibase</a></li>
+  <li><a href="https://github.com/kumarshantanu/clj-liquibase">Clojure Liquibase Wrapper</a></li>
+</ul>
+:ET

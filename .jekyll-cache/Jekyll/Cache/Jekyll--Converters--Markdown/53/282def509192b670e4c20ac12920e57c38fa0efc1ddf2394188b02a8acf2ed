@@ -1,0 +1,106 @@
+I"�#<h1 id="rolling-back-changesets">Rolling Back ChangeSets</h1>
+
+<p>Liquibase allows you to undo changes you have made to your database, either automatically or via custom rollback SQL. Rollback support is available in <a href="command_line.html">command_line</a>, <a href="ant/index.html">Ant</a>, and <a href="maven/index.html">Maven</a>.</p>
+
+<h2 id="how-rollback-sql-is-controlled">How Rollback SQL is controlled</h2>
+
+<p>Many refactorings such as “create table”, “rename column”, and “add column” can automatically create rollback statements. If your change log contains only statements that fit into this category, your rollback commands will be generated automatically.</p>
+
+<p>Other refactorings such as “drop table” and “insert data” have no corresponding rollback commands that can be automatically generated. In these cases, and cases where you want to override the default generated rollback commands, you can specify the rollback commands via the <rollback></rollback> tag within the changeSet tag.  If you do not want anything done to undo a change in rollback mode, use an empty <rollback></rollback> tag.</p>
+
+<h2 id="rollback-tag-available-attributes">Rollback Tag Available Attributes</h2>
+
+<table>
+<tr><th>Attribute</th><th>Description</th></tr>
+<tr><td>nested tags</td><td>Standard Liquibase change tags to generate rollback statements  </td></tr>
+<tr><td>tag text</td><td>SQL to run to rollback this change  </td></tr>
+<tr><td>changeSetId</td><td>Id of changeset to rerun in order to rollback this change.  Example: for rolling back a dropTable change, reference the changeSet that created the table.  </td></tr>
+<tr><td>changeSetAuthor</td><td>Author of changeset to rerun in order to rollback this change  </td></tr>
+</table>
+
+<h2 id="samples">Samples</h2>
+
+<p>Many change tags do not need a rollback tag.  They can be generated from the update statement.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"changeRollback2-create"</span> <span class="na">author=</span><span class="s">"nvoxland"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"changeRollback2"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span></code></pre></figure>
+
+<p>Standard change tags can be used in a <code class="highlighter-rouge">&lt;rollback&gt;</code> tag</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"changeRollback"</span> <span class="na">author=</span><span class="s">"nvoxland"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"changeRollback1"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+        <span class="nt">&lt;rollback&gt;</span>
+            <span class="nt">&lt;dropTable</span> <span class="na">tableName=</span><span class="s">"changeRollback1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/rollback&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span></code></pre></figure>
+
+<p>Multiple statements can be included in one <code class="highlighter-rouge">&lt;rollback&gt;</code> tag.  Multiple rollback tags can be specified in one changeSet.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"multiRollbackTest"</span> <span class="na">author=</span><span class="s">"rs"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"multiRollback1"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"multiRollback2"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+        <span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"multiRollback3"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/createTable&gt;</span>
+        <span class="nt">&lt;rollback&gt;</span>
+            drop table multiRollback1;
+            drop table multiRollback2;
+        <span class="nt">&lt;/rollback&gt;</span>
+        <span class="nt">&lt;rollback&gt;</span>drop table multiRollback3<span class="nt">&lt;/rollback&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span></code></pre></figure>
+
+<p>A rollback tag can reference the changeSet the originally created a statement.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"changeRollback2-drop"</span> <span class="na">author=</span><span class="s">"nvoxland"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;dropTable</span> <span class="na">tableName=</span><span class="s">"changeRollback2"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;rollback</span> <span class="na">changeSetId=</span><span class="s">"changeRollback2-create"</span> <span class="na">changeSetAuthor=</span><span class="s">"nvoxland"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span></code></pre></figure>
+
+<p>Rollback tags can be empty if no rollback is possible/needed</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"noRollback"</span> <span class="na">author=</span><span class="s">"nvoxland"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;sql&gt;</span>insert into multiRollback3 (id) values (1)<span class="nt">&lt;/sql&gt;</span>
+        <span class="nt">&lt;rollback/&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span></code></pre></figure>
+
+<h2 id="roll-back-to-modes">“Roll Back To” Modes</h2>
+
+<p>You can specify what changes to rollback in three ways:</p>
+
+<h3 id="tag">Tag</h3>
+
+<p>Specifying a tag to rollback to will roll back all change-sets that were executed against the target database after the given tag was applied. See the <a href="command_line.html">“command line”</a> documentation for how to tag your database.</p>
+
+<h3 id="number-of-change-sets">Number of Change Sets</h3>
+
+<p>You can specify the number of change-sets to rollback.</p>
+
+<h3 id="date">Date</h3>
+
+<p>You can specify the date to roll back to.</p>
+
+<h2 id="roll-back-execution-modes">Roll back Execution Modes</h2>
+
+<p>Liquibase has three modes for managing rollbacks:</p>
+
+<h3 id="execute-rollback-directly">Execute Rollback Directly</h3>
+
+<p>The rollback commands can be executed directly against the target database. If any changes cannot be rolled back, you will be notified and none of the changes will roll back.</p>
+
+<h3 id="generating-a-rollback-script">Generating a Rollback Script</h3>
+
+<p>Rather than actually updating the database, the SQL required to roll back the database can be generated. This is useful if you want to preview what rollback commands will be executed before they are actually run.</p>
+
+<h3 id="generating-a-future-rollback-script">Generating a “Future Rollback” Script</h3>
+
+<p>This mode is designed to allow you to generate a rollback script at the same time you generate your migration script. It allows you to take an updated application and generate both the SQL to update the database to the new version as well as the SQL to bring that new version back to the current version if needed. This functionality is very useful when a DBA wants to control SQL going into the database, as well as for applications that require rollback documentation for internal and/or <a href="http://en.wikipedia.org/wiki/Sarbanes-Oxley_Act">“SOX-compliant”</a> processes. You do not need to specify a rollback date, tag, or count in this mode.</p>
+:ET

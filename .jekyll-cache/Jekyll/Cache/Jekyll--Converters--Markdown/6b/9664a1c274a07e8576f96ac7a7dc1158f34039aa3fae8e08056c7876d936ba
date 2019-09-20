@@ -1,0 +1,55 @@
+I"�<h1 id="features-and-changes-between-liquibase-19-and-20">Features and Changes between Liquibase 1.9 and 2.0</h1>
+
+<p>Liquibase 2.0 is a significant upgrade both in features and in community support.  For help in upgrading to version 2.0, see the <a href="v2_upgrade.html">Version 2.0 upgrade guide</a></p>
+
+<p><strong>This page will be updated regularly up to and beyond the 2.0 final release.</strong></p>
+
+<h1 id="extensibility">Extensibility</h1>
+
+<p>The primary focus of the 2.0 release is to open Liquibase up to extension.  There are several reasons for this, including:</p>
+<ul>
+  <li>The ability to upgrade components of Liquibase (such as Hibernate support) outside the regular release cycle</li>
+  <li>Allow new and experimental features to be introduced gradually</li>
+  <li>Allow 3rd parties to create custom extensions</li>
+  <li>Allow Liquibase users to modify functionality to better fit their needs</li>
+  <li>Allow us to support more database-specific features that don’t belong in the core library</li>
+</ul>
+
+<p>To support the new extensibility model, we completely refactored the codebase to clean it up (it is several years old), solidify APIs so they can coded against, added many integration points, and created an <a href="http://liquibase.org/extensions">extension portal</a>.</p>
+
+<p>Nearly every aspect of Liquibase can be modified including</p>
+<ul>
+  <li>Adding additional database change types</li>
+  <li>Modifying existing “core” changes with new attributes or defaults</li>
+  <li>Modifying SQL generated form by core and extension changes</li>
+  <li>Adding new database support</li>
+  <li>Modifying behavior of “core” database integrations</li>
+  <li>Modifying logging behaviors</li>
+  <li>Adding new precondition types as well as modifying and extending “core” preconditions</li>
+</ul>
+
+<p>For more information on extending Liquibase for your own use, or to create a publicly available extension, visit our <a href="http://liquibase.org/extensions">extension portal</a></p>
+
+<h1 id="new-features">New Features</h1>
+<ul>
+  <li><a href="http://www.liquibase.org/2010/05/liquibase-formatted-sql.html">Liquibase formatted SQL changelogs</a></li>
+  <li>Informix support</li>
+  <li>Ability to specify databases and contexts in which to specify changelog parameters</li>
+  <li>Ability to specify contexts on modifySql</li>
+  <li><a href="http://www.liquibase.org/documentation/preconditions#changelogpropertydefined">ChangeLogPropertyDefined</a> precondition</li>
+  <li>Performance improvements</li>
+  <li>Lots of bug fixes</li>
+</ul>
+
+<h1 id="community-improvements">Community Improvements</h1>
+<ul>
+  <li>Changed to Apache License, 2.0 from LGPL</li>
+  <li>Replacing the old mailing lists with an <a href="http://www.liquibase.org/forum">online forum</a></li>
+  <li><a href="http://liquibase.org/extensions">Extension/plug-in portal</a></li>
+  <li><a href="http://liquibase.jira.com">New Feature/Issue tracker</a></li>
+  <li><a href="http://liquibase.jira.com/source/browse/CORE">New source repository and browser</a></li>
+  <li>Maven as build script</li>
+  <li>Improved documentation including developer documentation</li>
+  <li>Improved test coverage</li>
+</ul>
+:ET

@@ -1,0 +1,162 @@
+I"�)<h1 id="database-diff">Database “Diff”</h1>
+
+<p>While the best way to track database changes is by adding change sets during development (see <a href="http://www.liquibase.org/2007/06/the-problem-with-database-diffs.html">the problem with database diffs</a>), there are times when being able to perform database diffs is valuable, particularly near the end of a project as a double-check that all required changes are included in the change log.</p>
+
+<h2 id="running-diff">Running Diff</h2>
+
+<p>Diff command support is available through the <a href="command_line.html">command_line</a> and <a href="ant/index.html">ant</a> tools.  When diff-ing databases, you specify the target database like you normally do in Liquibase (–url, –username, etc. flags) and you specify the base database with additional flags after the command name.</p>
+
+<h2 id="example">Example</h2>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">liquibase.sh <span class="nt">--driver</span><span class="o">=</span>oracle.jdbc.OracleDriver <span class="se">\</span>
+        <span class="nt">--url</span><span class="o">=</span>jdbc:oracle:thin:@testdb:1521:test <span class="se">\</span>
+        <span class="nt">--username</span><span class="o">=</span>bob <span class="se">\</span>
+        <span class="nt">--password</span><span class="o">=</span>bob <span class="se">\</span>
+    diff <span class="se">\</span>
+        <span class="nt">--referenceUrl</span><span class="o">=</span>jdbc:oracle:thin:@localhost/XE <span class="se">\</span>
+        <span class="nt">--referenceUsername</span><span class="o">=</span>bob <span class="se">\</span>
+        <span class="nt">--referencePassword</span><span class="o">=</span>bob</code></pre></figure>
+
+<h2 id="database-comparisons">Database Comparisons</h2>
+
+<p>Currently, Liquibase runs the following comparisons:</p>
+
+<ul>
+  <li>Version Differences</li>
+  <li>Missing/unexpected tables</li>
+  <li>Missing/unexpected views</li>
+  <li>Missing/unexpected columns</li>
+  <li>Missing/unexpected primary keys</li>
+  <li>Missing/unexpected unique constraints</li>
+  <li>Missing/unexpected foreign Keys</li>
+  <li>Missing/unexpected sequences</li>
+  <li>Missing/unexpected indexes</li>
+  <li>Column definition differences (data type, auto-increment, etc.)</li>
+  <li>View definition differences</li>
+  <li>Data differences (limited), not checked by default</li>
+</ul>
+
+<p>It does not (currently) check</p>
+
+<ul>
+  <li>Non-foreign key constraints (check, etc)</li>
+  <li>Stored Procedures</li>
+  <li>Data type length</li>
+</ul>
+
+<p>Liquibase can diff different database types, but the results may be skewed due to differences in case and data types.</p>
+
+<h2 id="controlling-checks-since-18">Controlling Checks (since 1.8)</h2>
+<p>What changes are checked for can be controlled with the diffTypes parameter to the diff commands.  The following options are available and can be passed as a comma-separated list:</p>
+
+<ul>
+  <li>tables <strong>[DEFAULT]</strong></li>
+  <li>columns <strong>[DEFAULT]</strong></li>
+  <li>views <strong>[DEFAULT]</strong></li>
+  <li>primaryKeys <strong>[DEFAULT]</strong></li>
+  <li>indexes <strong>[DEFAULT]</strong></li>
+  <li>foreignKeys <strong>[DEFAULT]</strong></li>
+  <li>sequences <strong>[DEFAULT]</strong></li>
+  <li>data</li>
+</ul>
+
+<p>If no diffTypes are specified, the checks marked DEFAULT will be run.</p>
+
+<p>Note: This only works with the “generateChangeLog” command, not the “diff” or “diffChangeLog” commands.</p>
+
+<h3 id="output-modes">Output Modes</h3>
+
+<p>Liquibase supports two output modes: report mode (“diff”) and change log mode (“diffChangeLog”). In both modes, diff progress is reported to standard error during execution.</p>
+
+<h3 id="report-mode">Report Mode</h3>
+
+<p>In report mode, a description of the differences between two databases is reported to standard out.</p>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">Base Database: BOB jdbc:oracle:thin:@testdb:1521:latest
+Target Database: BOB jdbc:oracle:thin:@localhost/XE
+Product Name: EQUAL
+Product Version:
+     Base:   'Oracle Database 10g Enterprise Edition Release 10.2.0.1.0
+With the Partitioning, OLAP and Data Mining options'
+     Target: 'Oracle Database 10g Express Edition Release 10.2.0.1.0'
+Missing Tables: NONE
+Unexpected Tables: NONE
+Missing Views: NONE
+Unexpected Views: NONE
+Missing Columns:
+     CREDIT.MONTH
+     CREDIT.COMPANY
+     CMS_TEMPLATE.CLASSTYPE
+     CONTENTITEM.SORTORDER
+Unexpected Columns:
+     CATEGORY.SORTORDER
+Missing Foreign Keys: NONE
+Unexpected Foreign Keys:
+     FK_NAME (ID_VC -&gt; STATUS_ID_VC)
+Missing Primary Keys: NONE
+Unexpected Primary Keys: NONE
+Missing Indexes: NONE
+Unexpected Indexes: NONE
+Missing Sequences: NONE
+Unexpected Sequences: NONE</code></pre></figure>
+
+<h3 id="changelog-mode">ChangeLog Mode</h3>
+
+<p>In change log mode, the an XML change log of what is necessary to upgrade the base database to the target database is sent to standard out. This change log can be included as is, or copied into an existing change log.  If the diff command is passed an existing change log file, the new change sets will be appended to the end of the file.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;databaseChangeLog</span>
+    <span class="na">xmlns=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog/1.1"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog/1.1
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185206820975-1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;addColumn</span> <span class="na">tableName=</span><span class="s">"CREDIT"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"MONTH"</span> <span class="na">type=</span><span class="s">"VARCHAR2(10)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/addColumn&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185206820975-2"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;addColumn</span> <span class="na">tableName=</span><span class="s">"CREDIT"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"COMPANY"</span> <span class="na">type=</span><span class="s">"NUMBER(22,0)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/addColumn&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185206820975-3"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;addColumn</span> <span class="na">tableName=</span><span class="s">"CMS_TEMPLATE"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"CLASSTYPE"</span> <span class="na">type=</span><span class="s">"VARCHAR2(255)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/addColumn&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185206820975-4"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;addColumn</span> <span class="na">tableName=</span><span class="s">"CONTENTITEM"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"SORTORDER"</span> <span class="na">type=</span><span class="s">"NUMBER(22)"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/addColumn&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185206820975-5"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;dropColumn</span> <span class="na">columnName=</span><span class="s">"SORTORDER"</span> <span class="na">tableName=</span><span class="s">"CATEGORY"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+    <span class="nt">&lt;changeSet</span> <span class="na">author=</span><span class="s">"diff-generated"</span> <span class="na">id=</span><span class="s">"1185206820975-6"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;dropForeignKeyConstraint</span> <span class="na">baseTableName=</span><span class="s">"CMS_STATUS"</span>
+                     <span class="na">constraintName=</span><span class="s">"FK_NAME"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+<span class="nt">&lt;/databaseChangeLog&gt;</span></code></pre></figure>
+
+<p>Database objects to include in the changelog can be controlled with the includeObjects or excludeObjects parameters. (since 3.3.2)</p>
+
+<p>The format supported is:</p>
+<ul>
+  <li>An object name (actually a regexp) will match any object whose name matches the regexp.</li>
+  <li>A type:name syntax that matches the regexp name for objects of the given type</li>
+  <li>If you want multiple expressions, comma separate them</li>
+  <li>The type:name logic will be applied to the tables containing columns, indexes, etc.</li>
+</ul>
+
+<p>NOTE: name comparison is case sensitive. If you want insensitive logic, use the <code class="highlighter-rouge">(?i)</code> regexp flag.</p>
+
+<p>Example Filters:</p>
+<ul>
+  <li>“table_name” will match a table called “table_name” but not “other_table” or “TABLE_NAME”</li>
+  <li>“(i?)table_name” will match a table called “table_name” and “TABLE_NAME”</li>
+  <li>“table_name” will match all columns in the table table_name</li>
+  <li>“table:table_name” will match a table called table_name but not a column named table_name</li>
+  <li>“table:table_name, column:*._lock” will match a table called table_name and all columns that end with “_lock”</li>
+</ul>
+:ET

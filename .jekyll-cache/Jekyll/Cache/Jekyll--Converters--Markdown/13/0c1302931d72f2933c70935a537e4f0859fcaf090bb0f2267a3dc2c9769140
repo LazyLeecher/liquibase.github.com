@@ -1,0 +1,139 @@
+I"~)<p>Liquibase 3.6.0 (actually 3.6.1 as well) is now available from <a href="http://liquibase.org/download">liquibase.org/download</a> and through the Maven repositories. Question or comments can be directed <a href="http://liquibase.org/community">to liquibase.org/community</a></p>
+
+<p>Version 3.6.0 is primarily a bugfix release, but there have been over new 1000 commits since the 3.5.x series, so TONS of good new things.</p>
+
+<h3 id="highlights-include">Highlights include</h3>
+
+<ul>
+  <li>Improved database support for MS SqlServer, Oracle, Sybase, DB2 on Z/OS and others</li>
+  <li>Improvements to spring and includeAll handling</li>
+  <li>UTF-8/Non-ASCII fixes</li>
+  <li>And much more</li>
+</ul>
+
+<h3 id="checksum-logic-change">Checksum logic change</h3>
+
+<p>The 3.6.0 release should be a drop-in replacement for anyone using Liquibase, but some of the bugfixes required an update to the checksum logic.</p>
+
+<p>This means that when you first run an update command, Liquibase will transparently replace the old version with the new version BUT it will not be able to detect whether they actually changed or not, so any “runOnChange” triggers will NOT execute on the first run of the upgrade.</p>
+
+<h3 id="looking-forward-api-changes">Looking Forward: API Changes</h3>
+
+<p>The main goal of 3.6.0 was to collect all the outstanding bugfixes and minor features into a base release to build on for future changes.</p>
+
+<p>Part of the reason for the gap between 3.5 and 3.6 is that I have been busily working on an extensive code cleanup/re-organization task in Liquibase concurrently and it has proved too difficult to keep the two branches in sync.
+I had been making the changes in a separate branch because I’ve always tried to keep API-compatibility between releases to avoid breaking extensions, and the clean-up work is the point where I’m needing to break some of those APIs in order to support future functionality.</p>
+
+<p>Unfortunately, it has gotten too difficult to manage both branches in parallel and the progress in both has suffered, so I am going to take a new approach: starting with the 3.7.0 release, I am going to be making API-breaking changes from release to release until they finished, at which point we will release 4.0.0 and resume the normal no-API-breaking-changes rule.
+This change only affects users of Liquibase extensions–<em>changelogs will ALWAYS backwards compatible.</em></p>
+
+<p>With each 3.x release, I will document any code migration changes needed as part of the release notes, but for those who prefer to wait for the final 4.0 stable release to update your extensions I will continue to provide bugfixes for 3.6.x even as newer versions come out.</p>
+
+<p>As an example of changes I’m planning on making, I have already started pulling out the custom ServiceLocator logic that causes so much pain with the standard java.util.ServiceLoader classes.</p>
+
+<h3 id="looking-forward-project-infrastructure-changes">Looking Forward: Project Infrastructure Changes</h3>
+
+<p>To simplify issue management, I’m going to migrate our issue tracking from Jira to Github. I’ll post an announcement as that is finished.</p>
+
+<p>I am finishing up re-introduction of a public build server and snapshot builds. I’ll post an announcement as that is finished.</p>
+
+<h3 id="reminder-community-survey-ends-saturday-april-14th">REMINDER: Community Survey Ends Saturday April 14th.</h3>
+
+<p>It should only take a few minutes to fill out and is a huge help in understanding how Liquibase is used and how we can improve.</p>
+
+<p><a href="https://goo.gl/forms/Atzmtw7XZatOehuP2">Liquibase Survey 2018 Form</a></p>
+
+<h3 id="full-release-notes">Full Release Notes</h3>
+
+<p>Thanks to everyone who helped with <a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=13060">all these issues</a></p>
+
+<ul>
+  <li>[CORE-1609] - Command Prompt: Can’t connect to database with a special character in pwd</li>
+  <li>[CORE-1852] - checksums depend on environment</li>
+  <li>[CORE-1888] - Sybase error for TINYINT, INT, BIGINT: Can’t specify a length, scale or storage property on type ‘int/tinyint/bigint’.</li>
+  <li>[CORE-2008] - H2 Supports minValue and maxValue in Sequences since Version 1.3.175, but Liquibase does not</li>
+  <li>[CORE-2033] - NPE during Diff when case sensitive table missing</li>
+  <li>[CORE-2135] - liquibase corrupting UTF-8 changesets</li>
+  <li>[CORE-2162] - MSSQL: Multiple inserts in sqlFile do not fail as expected</li>
+  <li>[CORE-2191] - Update on SQL Azure database fails due to unavailable sys.extended_properties</li>
+  <li>[CORE-2527] - Sybase create table fails because column name is too long</li>
+  <li>[CORE-2631] - dbdoc does not specify content type</li>
+  <li>[CORE-2739] - –delimiter parameter in liquibase –help</li>
+  <li>[CORE-2747] - CreateView / Oracle: Keyword REPLACE in view definition prohibits “or replace” in DDL statement</li>
+  <li>[CORE-2772] - primaryKeyExists check fails on Turkish locale for some chars</li>
+  <li>[CORE-2773] - DB2 AS/400 - generateChangeLog throwing Exception</li>
+  <li>[CORE-2796] - Handle TimeStamps with nano second precision correctly</li>
+  <li>[CORE-2797] - Determine the DB2 data server type correctly</li>
+  <li>[CORE-2820] - Unsupported ReorganizeTable for DB2 z/OS causes changelog validation to fail</li>
+  <li>[CORE-2821] - AddForeignKey statement generates incorrect SQL for DB2 z/OS</li>
+  <li>[CORE-2826] - indexExists precondition fails on AS400 + JDBCDatabaseSnapshot/Snapshot generator code is not coded generically?</li>
+  <li>[CORE-2843] - Sql wrong lexical analysis for string literals - escaped single quotes are misparsed</li>
+  <li>[CORE-2875] - UTF-8 character not understood</li>
+  <li>[CORE-2894] - Oracle snapshot not detecting custom datatypes in different schemas</li>
+  <li>[CORE-2909] - column remarks for mysql should be escaped</li>
+  <li>[CORE-2911] - Oracle: generateChangeLog on RAW types not including the size param</li>
+  <li>[CORE-2928] - Invalid snapshot of “duplicate” foreign keys</li>
+  <li>[CORE-2929] - Views with definitions that start with a comment are not captured correctly in generateChangeLog</li>
+  <li>[CORE-2940] - Do not print warning when DBA_RECYCLEBIN is not available</li>
+  <li>[CORE-2944] - outputDefaultSchema and outputDefaultCatalog command line parameters not respected</li>
+  <li>[CORE-2953] - update with valueSequenceNext and schema produces wrong SQL on oracle</li>
+  <li>[CORE-2965] - Custom Properties XML Changelog</li>
+  <li>[CORE-2992] - liquibase.util.grammar.TokenMgrError: Lexical error at line 1, column 71. Encountered: “\u00b4” (180), after : “”</li>
+  <li>[CORE-2993] - createSequence with order denied on DB2</li>
+  <li>[CORE-3002] - SQLAnywhere: Revert Unique Index failed</li>
+  <li>[CORE-3006] - Oracle CSV-Import: “String index out of range: -1”</li>
+  <li>[CORE-3009] - SQLAnywhere: Drop Default Value failed</li>
+  <li>[CORE-3020] - No warning when included file doesn’t exist (missing extension)</li>
+  <li>[CORE-3033] - typo in postgresql reserverd word</li>
+  <li>[CORE-3040] - onlyUpdate=”true” flag generates empty statements for MySQL DB</li>
+  <li>[CORE-3046] - Fix faulty snakeyaml class-path entry after upgrade to 1.17</li>
+  <li>[CORE-3051] - SQLAnywhere: Drop Table does not support CASCADE</li>
+  <li>[CORE-3054] - SQLAnywhere: java-coredump on changeSet-SQL</li>
+  <li>[CORE-3055] - SQLAnywhere: supports Sequences</li>
+  <li>[CORE-3063] - Integration tests failing on master</li>
+  <li>[CORE-3069] - Checksum: line endings not standardized on windows if multiple lines</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>[CORE-3072] - Add usePreparedStatements=”true</td>
+          <td>false” flag to loadData</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>[CORE-3076] - SUM is not reserved word for HsqlDB</li>
+  <li>[CORE-3099] - Non English environment; invalid tablename and column name can be generated because of toUpperCase toLowerCase method which is dependent to locale in java</li>
+  <li>[CORE-3101] - dropPrimaryKey TABLE_SCHEMA = ‘null’</li>
+  <li>[CORE-3106] - SQLAnywhere: DROP INDEX should use tablename</li>
+  <li>[CORE-3115] - Prefix space in column type causing the Unknown LiquibaseDataType with the latest release</li>
+  <li>[CORE-3117] - TIMESTAMP WITH TIME ZONE datatype is changed to TIMESTAMP in H2</li>
+  <li>[CORE-3119] - Maven failing to use driverPropertiesFile from Liquibase Properties File</li>
+  <li>[CORE-3135] - Column t1.tgconstrname does not exist</li>
+  <li>[CORE-3138] - SQLAnywhere: AddAutoIncrement-Statement is wrong</li>
+  <li>[CORE-3140] - MSSQL2005 doesn’t support built-in function original_db_name()</li>
+  <li>[CORE-3155] - CSV line content behind inline comment character doesn’t contribute to checksum</li>
+  <li>[CORE-3162] - Diff problem with MSSQL case sensitive database</li>
+  <li>[CORE-3171] - LoadUpdateData doesn’t work on SAP SQLAnywhere</li>
+  <li>[CORE-3180] - A DBMS-specific change set referencing a DBMS-specific rollback can’t be parsed on a different DBMS</li>
+  <li>[CORE-2735] - Add possibility to test rollback with SpringLiquibase</li>
+  <li>[CORE-1225] - Add support for tablespace assigned to liquibase metadata tables</li>
+  <li>[CORE-2628] - defaultSchema parameter doesn’t do Connection.setCatalog() for SpringLiquibase</li>
+  <li>[CORE-2842] - MSSQL: Support creating clustered unique constraints</li>
+  <li>[CORE-2891] - Liquibase “Command” objects can be extended and overridden</li>
+  <li>[CORE-2919] - Make all variants of Liquibase.listUnrunChangeSets public</li>
+  <li>[CORE-2952] - Use the clustered index if duplicate indexes are defined</li>
+  <li>[CORE-2955] - MSSQL: Capture explicit null default values on snapshot and generate/diffChangeLog</li>
+  <li>[CORE-2970] - MSSQL: Support default value constraint names</li>
+  <li>[CORE-2977] - Generated primary key constraint name doesn’t match Postgres default</li>
+  <li>[CORE-2985] - MSSQL Snapshot performance improvements</li>
+  <li>[CORE-3000] - Oracle JDBC batch for load_data</li>
+  <li>[CORE-3005] - Consideration of DB2/400 system views</li>
+  <li>[CORE-3017] - Add path attribute to createView</li>
+  <li>[CORE-3018] - Oracle: support remarks on createView</li>
+  <li>[CORE-3045] - Support indexes on views</li>
+  <li>[CORE-3079] - Make includeObjects and excludeObjects affect which objects are snapshotted</li>
+  <li>[CORE-3094] - HSQLDB UUID support</li>
+  <li>[CORE-2920] - Using “//” as an endDelimiter stopped working 3.5.0</li>
+</ul>
+:ET

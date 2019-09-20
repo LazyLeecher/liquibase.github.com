@@ -1,0 +1,2 @@
+I"<p>Rails Active Migration is nice for its simplicity, but in non-trivial projects, it quickly falls apart due to limitations it has regarding multiple developers and/or branches.  It’s a <a href="http://www.google.com/search?q=rails+migration+branches">well known problem</a></p>
+:ET

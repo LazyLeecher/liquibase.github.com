@@ -1,0 +1,11 @@
+I"0<p>A quick demo of the Liquibase Database Refactoring IDE is now available on the Liquibase site.</p>
+
+<p>It shows how to connect to your database, apply several refactorings to your database, then update an independent database with the new changes–all from the comfort of an IDE environment.</p>
+
+<p>The IDE is available as either a stand-alone tool or as an Eclipse plug-in.</p>
+
+<p><a href="http://www.liquibase.org/demos/ide_demo_0_6.htm">View the demo</a></p>
+
+<p><a href="http://www.liquibase.org/refactoring_ide/index.html">More Information</a></p>
+
+:ET

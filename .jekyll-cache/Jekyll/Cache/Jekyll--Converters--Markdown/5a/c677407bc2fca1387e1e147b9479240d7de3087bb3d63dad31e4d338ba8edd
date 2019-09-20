@@ -1,0 +1,14 @@
+I"À<p>Liquibase 3.6.3 is now available from <a href="http://liquibase.org/download">liquibase.org/download</a> and through the Maven repositories. Question or comments can be directed <a href="http://liquibase.org/community">to liquibase.org/community</a></p>
+
+<p>Version 3.6.3 is a bugfix release while we work on a 3.7.0 release.</p>
+
+<h3 id="fixes-include">Fixes include</h3>
+
+<ul>
+  <li>Better including SLF4 libraries</li>
+  <li>Fixes to includeAll and other file loading/finding logic</li>
+  <li>Many other misc fixes</li>
+</ul>
+
+<p>Full release notes are available from <a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=13504">https://liquibase.jira.com</a></p>
+:ET

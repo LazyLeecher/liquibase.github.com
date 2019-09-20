@@ -1,0 +1,36 @@
+I"~<p>Liquibase 1.2 has been released.  Major features include:</p>
+
+<ul>
+  <li>Support for H2 database</li>
+  <li>Support for InterSystems Cache database</li>
+  <li>Support for <code class="highlighter-rouge">&lt;sqlfile&gt;</code> change</li>
+  <li>Improved error messages</li>
+  <li><code class="highlighter-rouge">&lt;sql&gt;</code> tag can contain a <code class="highlighter-rouge">&lt;comment&gt;</code> tag</li>
+  <li>Change log file references can be absolute</li>
+  <li>SQL in <code class="highlighter-rouge">&lt;sql&gt;</code> tag can be ; or ‘go’ delimited</li>
+  <li>
+    <p>New clearCheckSums command in command line migrator</p>
+  </li>
+  <li>Support for version 0.5 of the <a href="http://www.liquibase.org/refactoring_ide/index.html">Liquibase IDE and Eclipse Plugin</a></li>
+</ul>
+
+<p>Many bugs have been fixed as well, including:</p>
+
+<ul>
+  <li>Sybase support fixes</li>
+  <li>Handle –defaultsFile correctly</li>
+  <li>Handle command line parameters correctly on Windows systems</li>
+  <li>Other bug fixes</li>
+</ul>
+
+<p>Upgrading is simply a matter of replacing the liquibase.jar file. To take advantage of newer change log features, change your XSD declaration to:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;databasechangelog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.2"
+     xsi="http://www.w3.org/2001/XMLSchema-instance"
+     schemalocation="http://www.liquibase.org/xml/ns/dbchangelog/1.2
+     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.2.xsd"&gt;
+</code></pre></div></div>
+
+<p><a href="http://www.liquibase.org/download.html">Download Liquibase 1.2</a></p>
+
+:ET

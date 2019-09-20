@@ -1,0 +1,73 @@
+I"�<h1 id="contexts">Contexts</h1>
+
+<p>“Contexts” in Liquibase are tags you can add to changeSets to control which will be executed in any particular migration run. Any string can be used for the context name and they are checked case-insensitively.</p>
+
+<p>When you run the migrator though any of the available methods, you can pass in a set of contexts to run. Only changeSets marked with the passed contexts will be run.</p>
+
+<p>If you don’t assign a context to a changeSet, it will run all the time, regardless of what contexts you pass in to the migrator.</p>
+
+<p>If you do not specify a context when you run the migrator, ALL contexts will be run.</p>
+
+<p>Here is an example of a change set using the context attribute:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">   <span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"2"</span> <span class="na">author=</span><span class="s">"bob"</span> <span class="na">context=</span><span class="s">"test"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;insert</span> <span class="na">tableName=</span><span class="s">"news"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">value=</span><span class="s">"Liquibase 0.8 Released"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/insert&gt;</span>
+        <span class="nt">&lt;insert</span> <span class="na">tableName=</span><span class="s">"news"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"title"</span> <span class="na">value=</span><span class="s">"Liquibase 0.9 Released"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/insert&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span></code></pre></figure>
+
+<h2 id="context-syntax">Context Syntax</h2>
+
+<p>Contexts can be specified using AND, OR, ! and parentheses. Without parentheses the order of operations are “!” then “AND” then “OR”.</p>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+  <li>context=”!test”</li>
+  <li>context=”v1.0 or map”</li>
+  <li>context=”v1.0 or map”</li>
+  <li>context=”!qa and !master”</li>
+</ul>
+
+<p>Using a “,” to separate contexts works like an OR operation but with the highest precedence.</p>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+  <li>“test, qa” is the same as “test OR qa”</li>
+  <li>“test, qa and master” is the same as “(test) OR (qa and master)</li>
+</ul>
+
+<p><strong>Availability:</strong></p>
+
+<ul>
+  <li>”,” separator available in all versions of Liquibase</li>
+  <li>“AND, OR, !, parentheses” added in 3.2.0</li>
+</ul>
+
+<h2 id="using-contexts-for-test-data">Using Contexts for Test Data</h2>
+
+<p>If you are managing your test data with Liquibase, the best way to include it is in-line with all your other changeSets, but marked with a “test” context. That way, when you want your test data inserted you can run the migrator with the “test” context. When it comes time to migrate your production database, don’t include the “test” context, and your test data not be included. If you have multiple test environments or test data sets, simply tag them with different contexts such as “min-test”, “integration-test”, etc.</p>
+
+<p>Using contexts to control test data is better than having a separate changeLog tree because later refactorings and changes will be applied to existing test data the same as they are applied to production data. If you had a set of test data that was created and simply added after the database is set up, you would be constantly manually updating your test data scripts to keep them in line with the current database schema.</p>
+
+<h2 id="using-contexts-for-multi-dbms-change-logs">Using Contexts for Multi-DBMS Change Logs</h2>
+
+<p>You can use contexts to control which change sets run on which databases, but the better option is to use the built-in “dbms” tag on the changeSet tag.</p>
+
+<h2 id="default-context">Default context</h2>
+
+<p>Beginning with Liquibase 3.5, you can specify a context attribute in the root databaseChangeLog node to assign that context to all changeSets in the changelog by default.</p>
+
+<p>The specified context will be AND’ed with any contexts specified in changeSets within the changelog file.</p>
+
+<h2 id="includeincludeall-context">Include/IncludeAll context</h2>
+
+<p>Beginning with Liquibase 3.5, you can specify a context attribute in <include> or <includeAll> tags. If specified, the given context is added to all changeSets in the included file(s).</includeAll></include></p>
+
+:ET

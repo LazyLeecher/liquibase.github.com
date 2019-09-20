@@ -1,0 +1,36 @@
+I"X	<h1 id="contributing-to-liquibase">Contributing to Liquibase</h1>
+
+<h2 id="using-github">Using GitHub</h2>
+
+<p>Liquibase uses the typical GitHub pull request workflow. GitHub provides great documentation including <a href="https://help.github.com/articles/fork-a-repo">How to Fork a Repository</a> and <a href="https://help.github.com/articles/using-pull-requests">Using Pull Requests</a>.</p>
+
+<p>The root Liquibase repository is at <a href="http://github.com/liquibase/liquibase">http://github.com/liquibase/liquibase</a>. To contribute fixes and features:</p>
+
+<ol>
+  <li>Create a fork of the main repository using the “Fork” button in the GitHub web interface</li>
+  <li>Clone your new repository to your computer</li>
+  <li>Create a branch in your repository for the fix or feature you are going to contribute</li>
+  <li>Code and test until done</li>
+  <li>Using git, “push” your changes back up to your local GitHub repository</li>
+  <li>Create a pull request in the GitHub web interface</li>
+  <li>Participate in any discussion on the pull request</li>
+</ol>
+
+<h2 id="git-crash-course">Git crash course</h2>
+
+<p>If you have not used Git or GitHub before, there are many resources available including <a href="http://git.or.cz/course/svn.html">Git - SVN Crash Cource</a> and the general <a href="http://help.github.com">GitHub Help</a>.</p>
+
+<p>If you would prefer to use subversion, GitHub <a href="https://github.com/blog/1178-collaborating-on-github-with-subversion">transparently supports SVN clients as well</a></p>
+
+<h2 id="code-guidelines">Code Guidelines</h2>
+
+<ul>
+  <li>The Liquibase project uses standard Java conventions</li>
+  <li>Curly braces go on the same line as the “if” statements</li>
+  <li>Git commit messages should include the Jira issue number, the issue summary, and a description of the how the change fixes the issue. For example “CORE-2822 YAML changelogs do not actually run included files. Finished implementation of the runIncludedChangeLog() method”.</li>
+  <li>Prefer smaller more frequent commits over larger monolithic commits</li>
+  <li>Make sure your pull request target branch follows the <a href="branches.html">branching standards</a>.</li>
+  <li>Create a pull request per feature or bug. Don’t combine multiple independent changes into a single pull request.</li>
+  <li>Include test cases for your features and bugs</li>
+</ul>
+:ET

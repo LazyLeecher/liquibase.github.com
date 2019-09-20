@@ -1,0 +1,10 @@
+I"t<h1 id="liquibase-architecture">Liquibase Architecture</h1>
+
+<p>The Liquibase migrator is designed to require no dependencies to run and be easy to integrate into various build and deployment processes.</p>
+
+<p>The primary worker class for Liquibase is <a href="http://www.liquibase.org/api/liquibase/Liquibase.html">liquibase.Liquibase</a>. All the various ways of interacting with Liquibase (<a href="http://www.liquibase.org/api/liquibase/commandline/CommandLineFileOpener.html">command line</a>, <a href="http://www.liquibase.org/api/liquibase/ant/DatabaseMigratorTask.html">Ant</a>, etc.) are thin wrappers around the Liquibase class.</p>
+
+<p>Each database refactoring/change is implemented by a class in the <a href="http://www.liquibase.org/api/liquibase/change/package-summary.html">liquibase.change</a> package. As the Liquibase migrator runs, it uses a SAX XML parser to parse the change logs, instantiate the necessary change class, and run or save the corresponding SQL.</p>
+
+<p>If you have additional questions about Liquibase’s architecture, please contact us via the <a href="../community/index.html">mailing list</a>.</p>
+:ET

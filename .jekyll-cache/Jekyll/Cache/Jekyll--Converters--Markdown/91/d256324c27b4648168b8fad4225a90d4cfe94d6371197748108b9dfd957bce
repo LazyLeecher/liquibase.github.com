@@ -1,0 +1,68 @@
+I"_<h1 id="change-log-parameters">Change Log Parameters</h1>
+
+<p><strong>Since Liquibase 1.7</strong></p>
+
+<p>Liquibase allows dynamic substitution of parameters in a changelog.  The parameters to replace are described using the ${} syntax.</p>
+
+<h2 id="configuring-parameter-values">Configuring parameter values</h2>
+
+<p>Parameter values are looked up in the following order:</p>
+
+<ul>
+  <li>Passed as a parameter to your Liquibase runner (see <a href="ant/index.html">Ant</a>, <a href="command_line.html">command_line</a>, etc. documentation for how to pass them)</li>
+  <li>As a JVM system property</li>
+  <li>In the parameters block (&lt;property&gt; Tag) of the <a href="DatabaseChangeLog.html">DatabaseChangeLog</a> file itself</li>
+  <li>As an environment variable</li>
+</ul>
+
+<h4 id="examples">Examples</h4>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"${table.name}"</span><span class="nt">&gt;</span>
+     <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"${column1.name}"</span> <span class="na">type=</span><span class="s">"varchar(${column1.length})"</span><span class="nt">/&gt;</span>
+     <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"${column2.name}"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/createTable&gt;</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;databaseChangeLog</span>
+        <span class="na">xmlns=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog"</span>
+        <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+        <span class="na">xmlns:ext=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog-ext"</span>
+        <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"clob.type"</span> <span class="na">value=</span><span class="s">"clob"</span> <span class="na">dbms=</span><span class="s">"oracle"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"clob.type"</span> <span class="na">value=</span><span class="s">"longtext"</span> <span class="na">dbms=</span><span class="s">"mysql"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;changeSet</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">author=</span><span class="s">"joe"</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;createTable</span> <span class="na">tableName=</span><span class="s">"${table.name}"</span><span class="nt">&gt;</span>
+             <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"id"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"${column1.name}"</span> <span class="na">type=</span><span class="s">"${clob.type}"</span><span class="nt">/&gt;</span>
+             <span class="nt">&lt;column</span> <span class="na">name=</span><span class="s">"${column2.name}"</span> <span class="na">type=</span><span class="s">"int"</span><span class="nt">/&gt;</span>
+         <span class="nt">&lt;/createTable&gt;</span>
+    <span class="nt">&lt;/changeSet&gt;</span>
+<span class="nt">&lt;/databaseChangeLog&gt;</span></code></pre></figure>
+
+<h3 id="property">&lt;property&gt;</h3>
+
+<p>Defines a parameter for the changelog. Given a list of contexts and/or databases, the parameter will be only used in those contexts and/or databases.</p>
+
+<h4 id="available-attributes">Available Attributes</h4>
+
+<table>
+<tr><th>Attribute</th><th>Description</th></tr>
+<tr><td>name</td><td>Name of the table's schema <b>required</b>  </td></tr>
+<tr><td>value</td><td>Name of the column's table <b>required</b>  </td></tr>
+<tr><td>context</td><td>Contexts given as comma separated list.  </td></tr>
+<tr><td>dbms</td><td>Database types given as comma separated list.  </td></tr>
+<tr><td>global</td><td>Defines whether the property is global or limited to a databaseChangeLog. Given as "true" or "false".  </td></tr>
+</table>
+
+<p>Example:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"simpleproperty"</span> <span class="na">value=</span><span class="s">"somevalue"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"clob.type"</span> <span class="na">value=</span><span class="s">"clob"</span> <span class="na">dbms=</span><span class="s">"oracle,h2"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"clob.type"</span> <span class="na">value=</span><span class="s">"longtext"</span> <span class="na">dbms=</span><span class="s">"mysql"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"myproperty"</span> <span class="na">value=</span><span class="s">"yes"</span> <span class="na">context=</span><span class="s">"common,test"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"localproperty"</span> <span class="na">value=</span><span class="s">"foo"</span> <span class="na">global=</span><span class="s">"false"</span><span class="nt">/&gt;</span></code></pre></figure>
+
+:ET

@@ -1,0 +1,6 @@
+I"}<h1 id="sql-output">SQL Output</h1>
+
+<p>Depending on your development and release processes, you may not want Liquibase to directly update your database.  Reasons for this may include a desire to tweak the resulting SQL, have the SQL approved by a DBA, or for <a href="http://www.liquibase.org/2007/07/sox-compliance-and-database-refactoring.html">SOX compliance</a>.</p>
+
+<p>For this reason, all <a href="update.html">update</a> and <a href="rollback.html">rollback</a> commands have an “sql output” mode which do not execute anything against the database but instead save the resulting SQL to standard out or a specified file.</p>
+:ET

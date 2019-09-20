@@ -1,0 +1,33 @@
+I"ù<h1 id="about-liquibase">About Liquibase</h1>
+
+<h2 id="availability">Availability</h2>
+
+<p>Download Liquibase here: <a href="http://liquibase.org/download">http://download.liquibase.org</a></p>
+
+<p>The official Liquibase Maven groups are <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.liquibase%22">org.liquibase</a> and <a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.liquibase.ext%22">org.liquibase.ext</a></p>
+
+<p>The main Liquibase artifact is <a href="http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22liquibase-core%22">group:org.liquibase, artifact:liquibase-core</a></p>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>All source code managed as part of the Liquibase project is available at <a href="https://github.com/liquibase">https://github.com/liquibase</a></p>
+
+<p>The main Liquibase code is at <a href="https://github.com/liquibase/liquibase">https://github.com/liquibase/liquibase</a></p>
+
+<h2 id="license">License</h2>
+
+<p>Liquibase is licensed under the Apache 2.0 License</p>
+
+<p>LIQUIBASE is a registered trademark of Datical.</p>
+
+<h2 id="friends-of-liquibase">Friends of Liquibase</h2>
+
+<p>The following companies have provided software and/or services to help support Liquibase:</p>
+
+<ul>
+  <li><strong>Datical</strong> (Sponsors Liquibase Development <a href="https://www.datical.com/">http://datical.com</a>)</li>
+  <li><strong>Atlassian</strong> (Provides <a href="http://liquibase.jira.com">http://liquibase.jira.com</a>)</li>
+  <li><strong>Zoho</strong> (Provides <a href="http://forum.liquibase.org">http://forum.liquibase.org</a>)</li>
+  <li><strong>YourKit</strong> (Provides <a href="http://yourkit.com">Java Profiler</a>)</li>
+</ul>
+:ET

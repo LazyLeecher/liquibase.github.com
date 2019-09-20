@@ -1,0 +1,27 @@
+I"
+<h1 id="building-liquibase">Building Liquibase</h1>
+
+<p>Liquibase is built using Maven 3. There is a top-level Maven pom.xml file in the root directory which will build each of the sub-modules in turn.
+3rd party jar dependencies are configured within the Maven pom.xml files and are automatically downloaded as part of the build process.</p>
+
+<h2 id="build-requirements">Build Requirements</h2>
+
+<ul>
+  <li>Java SE JDK 1.6 or higher installed</li>
+  <li>Maven 3.0 or higher</li>
+  <li>No OS requirements</li>
+</ul>
+
+<h2 id="running-maven">Running Maven</h2>
+
+<ol>
+  <li>Download maven 3.0 or greater from <a href="http://maven.apache.org">maven.apache.org</a></li>
+  <li>Unzip maven wherever you prefer</li>
+  <li><code class="highlighter-rouge">cd ROOT_LIQUIBASE_SOURCE_DIR</code></li>
+  <li><code class="highlighter-rouge">/MAVEN_HOME/bin/mvn package</code></li>
+</ol>
+
+<p>Build output goes to the “target” directory under each top level directory. The standard liquibase core jar file is in <code class="highlighter-rouge">ROOT_LIQUIBASE_SOURCE_DIR/liquibase-core/target/liquibase-VERSION.jar</code></p>
+
+<p><strong>Note: If you prefer to build Liquibase without running the tests, run <code class="highlighter-rouge">/MAVEN_HOME/bin/mvn -DskipTests=true package</code></strong></p>
+:ET

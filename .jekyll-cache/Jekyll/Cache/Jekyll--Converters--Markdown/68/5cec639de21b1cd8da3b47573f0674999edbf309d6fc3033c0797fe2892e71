@@ -1,0 +1,2 @@
+I"9<p>As I discussed in <a href="http://www.liquibase.org/2007/06/unit-testing-database-access-layer.html">Unit Testing the Database</a>, a difficulty you run into when using a shared dataset for unit tests is making sure you write your test in such a way that changes to the dataset will not break older tests.</p>
+:ET

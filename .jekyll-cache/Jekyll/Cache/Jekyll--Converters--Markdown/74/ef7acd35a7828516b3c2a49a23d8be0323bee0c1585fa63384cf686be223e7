@@ -1,0 +1,32 @@
+I"�<h1 id="liquibase-sdk-watch">Liquibase SDK Watch</h1>
+
+<p>The liquibase-sdk watch command runs a simple database view application. This command can be useful for understanding what Liquibase does,
+demos, and simple manual testing. The application runs as a web application running by default on localhost port 80.</p>
+
+<p><strong>Liquibase SDK is available in Liquibase 3.2.0+</strong></p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>Page auto-reloads on changes to DATABASECHANGELOG table</li>
+  <li>Select an item in the top tabbed section to see more details</li>
+  <li>DatabaseChangeLog records shown in reverse order for less scrolling</li>
+</ul>
+
+<h2 id="available-parameters">Available Parameters</h2>
+
+<ul>
+  <li><strong>–url</strong> Database URL to watch [required]</li>
+  <li><strong>–username</strong> Database username [required]</li>
+  <li><strong>–password</strong> Database password [required]</li>
+  <li><strong>–port</strong> HTTP port to use. Default: 8080</li>
+</ul>
+
+<p>Example:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">liquibase-sdk watch --url=jdbc:mysql://10.10.100.100/lbcat --username=lbuser --password=lbuser</code></li>
+</ul>
+
+<p><img src="watch-screenshot.png" style="max-width:80%" /></p>
+:ET

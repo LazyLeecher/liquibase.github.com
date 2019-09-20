@@ -1,0 +1,2 @@
+I"�<p>The goal of a Liquibase change log file is to track the linear sequence of changes required to take a database from a starting point to the current state, and it is built up one change at a time throughtout development. By following the “always append changes” rule you will ensure that all databases are consistent since all will have gone through the exact same set of changes.</p>
+:ET

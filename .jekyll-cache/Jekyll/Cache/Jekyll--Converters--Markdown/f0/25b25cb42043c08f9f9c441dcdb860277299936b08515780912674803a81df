@@ -1,0 +1,34 @@
+I"�	<p>Liquibase 3.0 beta 2 is now available.</p>
+
+<p>Major changes since beta 1 include:</p>
+
+<ul>
+  <li>Support for YAML and JSON formatted changelogs (see below)</li>
+  <li>Support for excluding databases in dbms attribute (see below)</li>
+  <li>Support for setting the dbms attribute on sql and sqlfile changes</li>
+  <li>Can generate rollback script file on startup with SpringLiquibase</li>
+  <li>Improved UTF8 support</li>
+  <li>Improvements to case-sensitive database support</li>
+  <li>Bugfixes</li>
+</ul>
+
+<h3 id="excluding-from-dbms-list">Excluding from dbms list</h3>
+
+<p>The dbms attribute now supports prepending a database name with “!” to specify which databases a changeset should not run on. For example: <code class="highlighter-rouge">&lt;changeSet dbms="!oracle"&gt;</code></p>
+
+<h3 id="json-and-yaml-changelog-support">JSON and YAML changelog support</h3>
+
+<p>For all you XML-haters out there, Liquibase not natively supports JSON and YAML formatted changelogs. The syntax and tags are very similar between the JSON, YAML and XML formats.</p>
+
+<p>YAML example: <a href="https://raw.github.com/liquibase/liquibase/master/liquibase-integration-tests/src/test/resources/changelogs/yaml/common.tests.changelog.yaml">https://raw.github.com/liquibase/liquibase/master/liquibase-integration-tests/src/test/resources/changelogs/yaml/common.tests.changelog.yaml</a></p>
+
+<p>JSON example: <a href="https://raw.github.com/liquibase/liquibase/master/liquibase-integration-tests/src/test/resources/changelogs/json/common.tests.changelog.json">https://raw.github.com/liquibase/liquibase/master/liquibase-integration-tests/src/test/resources/changelogs/json/common.tests.changelog.json</a></p>
+
+<p>If you chose to use YAML or JSON format, you will need to include <a href="https://code.google.com/p/snakeyaml/">snakeyaml </a>1.12 in your classpath.</p>
+
+<p>I’m continuing to work on shifting the documentation to github from the current wiki, and while there is still much more to do, you can at least see YAML and JSON change syntax example at <a href="http://liquibase.github.com/documentation/changes/add_auto_increment.html">http://liquibase.github.com/documentation/changes/add_auto_increment.html</a>.</p>
+
+<h3 id="download">Download</h3>
+
+<p>As always, you can download the release from <a href="http://liquibase.org/download">http://liquibase.org/download</a> and direct any comments or questions for <a href="http://forum.liquibase.org/">http://forum.liquibase.org</a></p>
+:ET

@@ -1,0 +1,7 @@
+I"K<h1 id="bundled-liquibase-changes">Bundled Liquibase Changes</h1>
+
+<p>Liquibase ships with a large number of refactoring/changes that can be applied to your database as well as the ability to write more through the
+<a href="../../extensions/index.html">extension system</a>.</p>
+
+<p>The bundled changes are listed on the left.</p>
+:ET

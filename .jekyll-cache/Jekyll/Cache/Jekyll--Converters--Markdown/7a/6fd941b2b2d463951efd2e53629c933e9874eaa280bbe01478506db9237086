@@ -1,0 +1,74 @@
+I"�<p>Liquibase 3.1.0 has been released.  For most people 3.1 is a drop in replacement for 3.0.</p>
+
+<p>If you use <code class="highlighter-rouge">&lt;includeAll&gt;</code> with relative paths or are running against MaxDB, DB2 for iSeries, or InterSystems Cache make sure you read the  <a href="http://liquibase.org/v3_1_upgrade.html">upgrade guide</a>.</p>
+
+<p>Besides bugfixes, 3.1 adds the following major features:</p>
+
+<h3 id="offline-database-support">Offline Database Support!</h3>
+
+<p>One of the most requested features is the ability to use Liquibase when you do not have direct access to the database. We have always had updateSql support, but it still required a database connection to know what has been ran and what type of database to generate SQL for.</p>
+
+<p>With the new “offline” support, you can now define a database connection URL like “<em>offline:mysql</em>” or “<em>offline:oracle?version=11.1</em>” when you run updateSql.</p>
+
+<p>In offline mode, the change history is tracked in a local csv file which can be controlled with the “changeLogFile” URL parameter. For example: <em>offline:mysql?changeLogFile:/home/db/changelog.csv</em></p>
+
+<p>For more information, see the <a href="www.liquibase.org/documentation/offline.html">offline database documentation</a></p>
+
+<h3 id="alternate-changelog-history-tracking">Alternate Changelog History Tracking</h3>
+
+<p>With 3.1, you can now create extensions that manage changelog history tracking differently than the standard “DATABASECHANGELOG” table. For example, <a href="https://github.com/liquibase/liquibase-filechangelog">https://github.com/liquibase/liquibase-filechangelog</a> allows you to manage your changelog history using a local file rather than a table in the database.</p>
+
+<h3 id="new-and-improved-change-tags">New and Improved Change tags:</h3>
+
+<ul>
+  <li><a href="http://www.liquibase.org/documentation/changes/create_procedure.html">createProcedure</a>now supports referencing an external file containing the procedure definition with a new “path” attribute</li>
+  <li>createProcedure now supports a dbms attribute to target the database(s) the procedure is compatible with. This allows you to have a single changeSet with a procedure definition for each supported database</li>
+  <li>New <a href="http://www.liquibase.org/documentation/changes/drop_procedure.html">dropProcedure</a> change</li>
+  <li><a href="http://www.liquibase.org/documentation/changes/add_column.html">addColumn</a> supports new “beforeColumn”, “afterColumn” and “position” attributes to control column ordering</li>
+  <li><a href="http://www.liquibase.org/documentation/changes/sql_file.html">sqlFile</a> files support ${} parameters</li>
+</ul>
+
+<h4 id="new-and-improved-precondition-tags">New and Improved Precondition tags:</h4>
+
+<ul>
+  <li><code class="highlighter-rouge">&lt;foreignKeyConstraintExists&gt;</code> now supports checking based on table and column definition. Not just constraint name</li>
+  <li>
+    <p>New <code class="highlighter-rouge">&lt;tableIsEmpty&gt;</code> precondition</p>
+  </li>
+  <li>New <code class="highlighter-rouge">&lt;rowCount&gt;</code> precondition</li>
+</ul>
+
+<h4 id="database-support-improvements">Database Support Improvements</h4>
+
+<ul>
+  <li>MySQL ENUM and SET type support improvements</li>
+  <li>MySQL support for date/time/timestamp size parameter</li>
+  <li>MySQL support for column remarks</li>
+  <li>MS SqlServer support for sequences (2012+)</li>
+  <li>Sybase general support improvements</li>
+  <li>DB2 general support improvements</li>
+</ul>
+
+<h4 id="extensionapi-improvements">Extension/API Improvements</h4>
+
+<ul>
+  <li>liquibase.changelog.visitor.ChangeExecListener implementations are notified of precondition and change-level interactions</li>
+  <li>SnapshotGenerator extensions can block incorrect functionality from other SnapshotGenerators</li>
+  <li>Extensions can define custom XSDs and namespaces</li>
+</ul>
+
+<h4 id="other-features-and-improvements">Other Features and Improvements</h4>
+
+<ul>
+  <li>Formatted SQL now supports a comma-separated list in “dbms” targeted changeSets</li>
+  <li>Maven support for futureRollbackSql command</li>
+</ul>
+
+<h4 id="links">Links</h4>
+
+<ul>
+  <li><a href="http://liquibase.org/download">Download 3.1.0</a></li>
+  <li><a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=10561">Full Jira Release Notes</a></li>
+  <li><a href="http://forum.liquibase.org">User Forum</a></li>
+</ul>
+:ET

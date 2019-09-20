@@ -1,0 +1,20 @@
+I"B<h1 id="liquibase-sdk">Liquibase SDK</h1>
+
+<h3 id="purpose-and-installation">Purpose and Installation</h3>
+
+<p>The purpose of the Liquibase SDK is facilitate development and testing of the Liquibase codebase and Liquibase extensions.
+The Liquibase SDK ships with the standard command line Liquibase installation which can be downloaded from <a href="http://download.liquibase.org">the Liquibase download page</a>.</p>
+
+<p>After unzipping liquibase-bin.zip or liquibase-bin.tar.gz you will find an “sdk” sub directory which contains everything related to the SDK.</p>
+
+<p><strong>Liquibase SDK is available in Liquibase 3.2.0+</strong></p>
+
+<h3 id="sdk-components">SDK Components</h3>
+
+<ul>
+  <li><a href="/javadoc"><strong>Javadoc</strong></a> The Liquibase core library API documentation is included in the LIQUIBASE_HOME/sdk/javadoc directory for easy offline reference.</li>
+  <li><a href="workspace.html"><strong>Workspace</strong></a> To make testing easier, a pre-configured “workspace” directory is included with sample changelog files.</li>
+  <li><a href="vagrant.html"><strong>Vagrant</strong></a> Vagrant box configurations can be automatically generated for testing purposes.</li>
+  <li><a href="watch.html"><strong>Watch</strong></a> Simple changelog table and database viewer. Useful for demos and manual testing.</li>
+</ul>
+:ET

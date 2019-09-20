@@ -1,0 +1,2 @@
+I"Ð<p>Early on, Liquibase only supported XML changelogs with each changeSet listed in it. There are many advantages to using that setup, but there are now many different ways to store your database changes.</p>
+:ET

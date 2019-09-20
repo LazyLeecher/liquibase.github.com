@@ -1,0 +1,37 @@
+I"‹<h1 id="liquibase-development">Liquibase Development</h1>
+
+<h2 id="source-code">Source Code</h2>
+
+<p>The core Liquibase source code is at <a href="http://github.com/liquibase/liquibase">http://github.com/liquibase/liquibase</a>.</p>
+
+<p>All standard extensions are a part of the <a href="http://github.com/liquibase">http://github.com/liquibase</a>.</p>
+
+<ul>
+  <li><a href="contribute.html">How to Contribute Code</a></li>
+  <li><a href="branches.html">Branch Structure</a></li>
+  <li><a href="code_org.html">Code Organization</a></li>
+  <li><a href="building.html">Building Liquibase</a></li>
+  <li><a href="../javadoc/index.html">Javadoc</a></li>
+</ul>
+
+<h2 id="extensions-vs-core">Extensions vs. Core</h2>
+
+<p>Liquibase is designed to support adding, enhancing, and overriding standard functionality through our extension framework.
+Often times, the best way to add new functionality is to create a new extension or add to an existing one rather than modifying the base library.</p>
+
+<p>For more information on how to write extensions, see <a href="../extensions/index.html">the extension portal</a>.</p>
+
+<h2 id="issue-tracking">Issue Tracking</h2>
+
+<p><strong>Liquibase Core</strong></p>
+
+<p>Bugs and features for the core Liquibase project are managed at <a href="http://liquibase.jira.com/browse/CORE">http://liquibase.jira.com/browse/CORE</a>.</p>
+
+<p>For more information, see <a href="jira.html">Liquibase Jira Workflow</a></p>
+
+<p><strong>Extensions</strong></p>
+
+<p>Issue tracking for extensions are handled as they see fit.</p>
+
+<p>For more information, see the individual extension pages on the <a href="../extensions/index.html">the extension portal</a>.</p>
+:ET

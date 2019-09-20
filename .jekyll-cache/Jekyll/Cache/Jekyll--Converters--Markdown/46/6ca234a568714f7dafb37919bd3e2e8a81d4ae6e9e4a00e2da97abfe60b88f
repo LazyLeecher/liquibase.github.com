@@ -1,0 +1,39 @@
+I"C<p>My plan for 1.10 is to focus on extensibility. I wanted to make sure I have good goals for that in mind, and that what we are planning to do will match up with those goals.
+<em>2.   Create 3rd party community.</em></p>
+
+<p>a.   Ability to override what SQL is sent to the database for standard databases and refactorings (Add engine innodb to all create table statements, LoadData on MSSQL should call “set identity insert on/off”, etc)</p>
+
+<p>b.   Ability to add custom Change classes and use them from the changeset</p>
+
+<p>c.   Ability to create a custom changelog parser as an alternative to the standard XML</p>
+
+<p>d.   Better documentation of how the liquibase API can be used within an application</p>
+
+<p>e.   Ensure that all liquibase APIs will remain stable for the foreseeable future</p>
+
+<p><em>2.   Create 3rd party community.</em> There are many refactorings that we do not want to support in the core because they are database specific or limited in scope (vacuum database, set identity_insert on, etc).</p>
+
+<p>a.   Create a “contrib” area on the site that people can upload useful extensions that are not in the core</p>
+
+<p>b.   Developer documentation on extending liquibase</p>
+
+<p>c.   Better issue/feature tracker that supports extensions?</p>
+
+<p>d.   Better mailing list/newsgroup setup</p>
+
+<p>e.   Ensure that all documented extension points will remain stable for the foreseeable future</p>
+
+<p><em>3.   Make core codebase more approachable to submissions:</em></p>
+
+<p>a.   Better developer documentation</p>
+
+<p>b.   Document migration path from 3rd party extension to core functionality</p>
+
+<p>c.   Refactoring of codebase to make it easier to add new Database, Change, and Statement classes without touching as much other code</p>
+
+<p>d.   Better unit test coverage to stop regression errors</p>
+
+<p>Is there any particular use cases related to extensibility you want to make sure are addressed? What am I missing?</p>
+
+<p>I plan to follow up with requests for in-depth comments on each of these steps as we get to them and can say exactly what we are implementing.</p>
+:ET

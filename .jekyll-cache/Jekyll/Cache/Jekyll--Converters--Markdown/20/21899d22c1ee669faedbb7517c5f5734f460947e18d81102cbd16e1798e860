@@ -1,0 +1,15 @@
+I"t<p>2.0.5 has been released. This is to fix a couple regressions introduced in 2.0.4.</p>
+
+<p>Download from <a href="http://liquibase.org/download">http://liquibase.org/download</a></p>
+
+<p>Bug Fixes:</p>
+
+<ul>
+  <li>Removed new load blob/clob data from files feature</li>
+  <li>Fixed linux distribution shell script</li>
+  <li>Command line updateSQL output is once again going to STDOUT</li>
+</ul>
+
+<p><strong>Full release notes</strong>: <a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=10360">https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=10360</a></p>
+
+:ET

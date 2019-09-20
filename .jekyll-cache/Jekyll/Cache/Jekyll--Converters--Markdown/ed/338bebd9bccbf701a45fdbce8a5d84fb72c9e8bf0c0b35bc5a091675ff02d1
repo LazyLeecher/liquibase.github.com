@@ -1,0 +1,44 @@
+I"V<p>Liquibase 1.1 has been released.  Major new features include:</p>
+
+<ul>
+  <li>
+    <p>Support for additional databases: DB2, Derby, Sybase (not fully tested), and HSQL</p>
+  </li>
+  <li>
+    <p>Support for “unsupported” databases</p>
+  </li>
+  <li>
+    <p><a href="http://www.liquibase.org/manual/latest/diff.html">Database Diff Tool</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.liquibase.org/manual/latest/generate_changelog.html">Database Creation Script Generator</a></p>
+  </li>
+  <li>
+    <p>new DBMS attribute on change set tag that allows you to specify what databases to run the change set against</p>
+  </li>
+  <li>
+    <p>“verify” command that checks for change log problems without attempting to execute any</p>
+  </li>
+  <li>
+    <p>“status” command that shows information on unrun change sets</p>
+  </li>
+  <li>
+    <p>Handle date/time and numeric values better on inserts and setting default values</p>
+  </li>
+  <li>
+    <p>Bug Fixes</p>
+  </li>
+</ul>
+
+<p>Upgrading is simply a matter of replacing the liquibase.jar file.  To take advantage of newer change log features, change your XSD declaration to:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.1
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd"&gt;
+</code></pre></div></div>
+
+<p><a href="http://www.liquibase.org/download.html">Download Liquibase 1.1</a></p>
+
+:ET

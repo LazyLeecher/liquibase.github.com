@@ -1,0 +1,92 @@
+I"�<p>Liquibase Core 1.5.0 is now available for download from <a href="http://www.liquibase.org/download">http://www.liquibase.org/download</a></p>
+
+<p>1.5.0 includes a major refactoring which should not affect most users except for the following items:</p>
+
+<h4 id="breaking-changes">BREAKING CHANGES</h4>
+
+<ul>
+  <li>
+    <p><em>Servlet Migrator:</em> The web.xml parameter names have changed.  See <a href="http://www.liquibase.org/manual/servlet_listener">http://www.liquibase.org/manual/servlet_listener</a> for more information.</p>
+  </li>
+  <li>
+    <p>If you used the “database.migrator.should.run”, it is must now be changed to “liquibase.should.run”</p>
+  </li>
+  <li>
+    <p>If you have extended or embedded Liquibase classes or calls directly in your code, changes will be necessary.</p>
+  </li>
+</ul>
+
+<h4 id="backwards-compatible-changes">BACKWARDS-COMPATIBLE CHANGES</h4>
+
+<ul>
+  <li>
+    <p><em>Servlet Migrator:</em> The classes to reference in web.xml have changed to liquibase.servlet.LiquibaseStatusServlet and liquibase.servlet.LiquibaseServletListener.  The old classes are now simply subclasses of the new and are deprecated so they should work.</p>
+  </li>
+  <li>
+    <p><em>Spring Migrator:</em> The class to reference in your spring config has changed to liquibase.spring.SpringLiquibase.  The old class still exists as a subclass of the new so existing configurations should continue to work.</p>
+  </li>
+  <li>
+    <p><em>Command Line:</em> The “migrate” command has been changed to “update”.
+“migrate” is now an alias for “update” so existing calls should continue to work</p>
+  </li>
+</ul>
+
+<h4 id="enhancements">ENHANCEMENTS</h4>
+
+<h4 id="improved-schema-support">IMPROVED SCHEMA SUPPORT</h4>
+<p>There is now a “defaultSchemaName” parameter available for setting default schema.  This schema will be used for all ambiguous database objects as well as for storing the databasechangelog and databasechangeloglock tables.</p>
+
+<h4 id="new-commands">NEW COMMANDS</h4>
+<p>Ant support has been greatly expanded and now covers most of the functionality available in the command line application.  See <a href="http://www.liquibase.org/manual/ant">http://www.liquibase.org/manual/ant</a> for more information.</p>
+
+<h4 id="new-commands-1">NEW COMMANDS</h4>
+
+<ul>
+  <li>changeLogSync</li>
+  <li>updateCount</li>
+  <li>updateCountSQL</li>
+</ul>
+
+<h4 id="new-refactorings">NEW REFACTORINGS</h4>
+
+<ul>
+  <li>
+    <p><a href="http://www.liquibase.org/manual/update_data">update change</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.liquibase.org/manual/delete_data">delete change</a></p>
+  </li>
+</ul>
+
+<h4 id="other-changes">OTHER CHANGES</h4>
+
+<ul>
+  <li>Custom Database implementations can be specified with the databaseClassName parameter</li>
+  <li>“replaceIfExists” attribute added to createView</li>
+  <li>createTable can specify uniqueConstraintName</li>
+  <li>Setting value/valueNumeric/valueBoolean/valueDate on addColumn will update all existing rows with the given value</li>
+  <li>Database table comments saved to generated change log</li>
+  <li>Changelog file comparisons are case-insensitive on windows</li>
+  <li>Output warning of old schema version</li>
+  <li>Added comments tag to generated SQL output</li>
+  <li>Rollback commands can specify contexts</li>
+  <li>XSDs are not pulled from network</li>
+  <li>Handles Postgres datatypes better</li>
+  <li>Bug fixes</li>
+</ul>
+
+<h4 id="upgrading">Upgrading</h4>
+
+<p>Upgrading is simply a matter of replacing the liquibase.jar file. To take advantage of newer change log features, change your XSD declaration to:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;databasechangelog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.5"
+    xsi="http://www.w3.org/2001/XMLSchema-instance"
+    schemalocation="http://www.liquibase.org/xml/ns/dbchangelog/1.5
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.5.xsd"&gt;
+</code></pre></div></div>
+
+<p>Depending on feedback received from this release, the 1.5.0.0 releases of the various plug-ins (Maven, Grails, IntelliJ, Eclipse) should be released over the next few days.</p>
+
+<p>As usual, be sure to <a href="http://www.liquibase.org/community">let us know</a> if you have any questions or issues.</p>
+
+:ET

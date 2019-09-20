@@ -1,0 +1,28 @@
+I"J<p>After far too long, the Liquibase-Hibernate plugin has been updated to <strong>support Hibernate 5.x!!</strong></p>
+
+<p>To use the new Hibernate 5 support, either download the liquibase-hibernate5 jar from the <a href="https://github.com/liquibase/liquibase-hibernate/releases">release page</a>
+or change your maven coordinates to &lt;artifactId&gt;liquibase-hibernate5&lt;/artifactId&gt; instead of &lt;artifactId&gt;liquibase-hibernate4&lt;/artifactId&gt;.</p>
+
+<p>I have also released a 3.6 version of the liquibase-hibernate4 plugin that fixes some issues and also supports the newest Liquibase 3.5.3.</p>
+
+<h3 id="potential-issues">Potential Issues</h3>
+
+<p>Because of changes in how Hibernate handles its naming between 4.x and 5.x, you now need to use separate implicitNamingStrategy and physicalNamingStrategy settings.
+The Liquibase-Hibernate plugin will try to pick these up from your configuration automatically, but if you are setting them in your liquibase “url” you may need to change them.</p>
+
+<p>Liquibase 3.5 introduced a change to how the the loadData change computed checksums of the CSV. The fix made it more forgiving of whitespace added to the file, but if you
+previously had whitespace in your csv file you will get checksum validation errors. Adding the &lt;validCheckSum&gt;*&lt;/validCheckSum&gt; tag to any problem changeSets will fix the problem.</p>
+
+<h3 id="additional-changes-in-this-release">Additional changes in this release</h3>
+
+<ul>
+  <li>Better diffChangeLog/generateChangeLog support for unique constraints</li>
+  <li>Improved support for @Clob and @Lob annotations</li>
+  <li>Improved detection and use of hibernate dialects</li>
+  <li>Improved handling of indexes and primary keys</li>
+</ul>
+
+<p>The full changelog is available at <a href="https://github.com/liquibase/liquibase-hibernate/milestone/6?closed=1">https://github.com/liquibase/liquibase-hibernate/milestone/6?closed=1</a></p>
+
+<p>Any issues or feature suggestions can be added to <a href="https://github.com/liquibase/liquibase-hibernate/issues">https://github.com/liquibase/liquibase-hibernate/issues</a></p>
+:ET

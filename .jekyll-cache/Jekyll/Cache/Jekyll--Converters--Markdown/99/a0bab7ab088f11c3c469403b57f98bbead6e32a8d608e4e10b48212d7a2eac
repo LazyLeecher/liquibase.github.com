@@ -1,0 +1,15 @@
+I"­<p>Liquibase Core 1.5.1 has been released along with the initial 1.5.x series Grails and IntelliJ plugins.</p>
+
+<p>Changes to the core library are minor bug fixes including:</p>
+
+<ul>
+  <li>Fixed failOnError logic</li>
+  <li>Improved serial column detection in Postgres</li>
+  <li>Rollback connections before close for DB2</li>
+  <li>Other minor bug fixes</li>
+</ul>
+
+<p>The Liquibase core library can be downloaded, as usual,  from  <a href="http://www.liquibase.org/download">http://www.liquibase.org/download</a>. The Grails and IntelliJ plugins are installed via their respective plugin managers</p>
+
+<p>The 1.5 Maven plugin should be released next week after further testing.</p>
+:ET

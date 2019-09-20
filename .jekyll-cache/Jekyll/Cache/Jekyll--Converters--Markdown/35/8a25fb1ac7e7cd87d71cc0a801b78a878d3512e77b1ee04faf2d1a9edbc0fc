@@ -1,0 +1,21 @@
+I"<p>The Liquibase team is proud to announce version 1.0.  <a href="http://www.liquibase.org/">Liquibase</a> is an open source (LGPL) java-based tool for managing database changes and refactorings. It has been under active development for over a year and supports many features including:</p>
+
+<ul>
+  <li>Change tracking format that supports multiple developers and code branches</li>
+  <li>Thirty built-in refactorings including “Merge Columns” and “Add Lookup Table”</li>
+  <li>Can execute updates directly, or save SQL for review by DBAs</li>
+  <li>Can roll back databases to earlier versions based on dates, tags, or number of changes</li>
+  <li>Database independent. Currently supports MySQL, PostgreSQL, Oracle, and MSSQL with additional databases planned for version 1.1.</li>
+  <li>Can be executed as an Ant task, a Maven Plug-in, as a Servlet Listener, or though a command-line program</li>
+  <li>Changes can be tagged with “contexts” so not all changes need to be applied to all environments</li>
+  <li>Uses a distributed locking system to protect against machines upgrading the same database at the same time</li>
+  <li>Extensive documentation including a quick-start guide and manual</li>
+</ul>
+
+<p>As a database change tracking tool, Liquibase is useful for any project with a database, but is especially useful in an agile environment due to the large number of changes that are generated throughout the project’s lifecycle.</p>
+
+<p>There are many post-1.0 features planned, including support for additional databases (DB2, Sybase, Derby and HSQL are already implemented in the 1.1 branch), a database-refactoring IDE plug-ins, additional refactorings, a database diff tool, and more.</p>
+
+<p>We would like to thank everyone who helped us get to the point we are at today.</p>
+
+:ET

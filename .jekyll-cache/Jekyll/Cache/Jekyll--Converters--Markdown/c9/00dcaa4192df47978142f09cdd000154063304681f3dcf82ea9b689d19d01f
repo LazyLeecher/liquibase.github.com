@@ -1,0 +1,2 @@
+I"�<p>A new feature with Liquibase 3.3 is “labels”. Labels are similar to contexts in that both allow you to chose a subset of changeSets to execute at runtime. Labels are also similar to contexts in that both are purposely vague terms because they are fairly generic features can enable many different use cases. Where they differ is in who has the power to specify complex logic: the changeSet author or the deployment manager.</p>
+:ET

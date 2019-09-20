@@ -1,0 +1,2 @@
+I"Ë<p>We store an md5 checksum with each changeset entry in the database changelog table to detect differences between what is currently in the changelog and what was actually ran against the database.</p>
+:ET

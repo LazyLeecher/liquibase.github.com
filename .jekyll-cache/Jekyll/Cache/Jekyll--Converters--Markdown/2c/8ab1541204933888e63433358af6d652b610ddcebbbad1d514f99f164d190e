@@ -1,0 +1,117 @@
+I"?0<h1 id="json-format">JSON Format</h1>
+
+<p>Liquibase supports JSON as a format for storing your changelog files.</p>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>To use JSON-based changelogs, you must include <a href="https://code.google.com/p/snakeyaml/">snakeyaml-1.12.jar</a> in your classpath.</p>
+
+<h2 id="limitations">Limitations</h2>
+
+<p>None</p>
+
+<h2 id="example">Example</h2>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="nl">"databaseChangeLog"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"preConditions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"runningAs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"liquibase"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"changeSet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvoxland"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"createTable"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"tableName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"columns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"column"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"autoIncrement"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                            </span><span class="nl">"primaryKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                                            </span><span class="nl">"nullable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                                        </span><span class="p">},</span><span class="w">
+                                    </span><span class="p">}</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"column"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"firstname"</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"varchar(50)"</span><span class="w">
+                                    </span><span class="p">}</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"column"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastname"</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"varchar(50)"</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"constraints"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                            </span><span class="nl">"nullable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                                        </span><span class="p">},</span><span class="w">
+                                    </span><span class="p">}</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"column"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"char(2)"</span><span class="w">
+                                    </span><span class="p">}</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                            </span><span class="p">]</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"changeSet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvoxland"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"addColumn"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"tableName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"columns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"column"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"username"</span><span class="p">,</span><span class="w">
+                                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"varchar(8)"</span><span class="w">
+                                    </span><span class="p">}</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                           </span><span class="p">]</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"changeSet"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nvoxland"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"addLookupTable"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"existingTableName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"existingColumnName"</span><span class="p">:</span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"newTableName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"state"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"newColumnName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"newColumnDataType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"char(2)"</span><span class="p">,</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+:ET

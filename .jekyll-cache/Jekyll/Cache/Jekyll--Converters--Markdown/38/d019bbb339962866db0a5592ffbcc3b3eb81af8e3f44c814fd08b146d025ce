@@ -1,0 +1,50 @@
+I"�<p>Lots of good bugfixes in 3.0.7, but major improvements are:</p>
+
+<ul>
+  <li>Significantly decreased memory usage, especially with large sql files</li>
+  <li>Improved checksum performance</li>
+  <li>Fixed SQLite support</li>
+  <li>Improvements to data type handling, especially in MS SqlServer</li>
+</ul>
+
+<h3 id="discovered-checksum-issue">Discovered Checksum Issue:</h3>
+
+<p>It was recently discovered that a change in the 3.0.5 release caused changeSets with <code class="highlighter-rouge">update</code> and <code class="highlighter-rouge">delete</code> changeSets with <code class="highlighter-rouge">where</code> clauses to compute a different checksum version than the 3.0.0-3.0.4 release. I decided to leave the 3.0.5 fix in because at this point, people would be affected by either leaving or reverting the change and keeping it in will preserve the bugfix. If you are upgrading from 2.x or 3.0.5+, this will not affect you. If you are upgrading from 3.0.0 through 3.0.4 and have no <code class="highlighter-rouge">&lt;update&gt;</code> or <code class="highlighter-rouge">&lt;delete&gt;</code> changeSets, this will not affect you. If you do run into this, you simply have to null out the md5sum column in databasechangelog for the affected changesets. This can be done either through an “update databasechangelog set md5sum=null” call or a more targeted “update databasechangelog set md5sum=null where id=’AFFECTED_ID’ and author=’AFFECTED AUTHOR’”. There is also a “liquibase clearCheckSums” command that runs the update query.</p>
+
+<h3 id="download">Download</h3>
+
+<p>Download Liquibase from <a href="http://liquibase.org/download">http://liquibase.org/download</a> or from the Maven repository as it winds its way through the mirror process. Visit the <a href="http://liquibase.org/community">user forums</a> if you have any questions.</p>
+
+<h3 id="all-closed-issues">All Closed Issues</h3>
+
+<ul>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1247">CORE-1247</a> - (Sqlite) bad syntax in create table statements with single autoincrement primary key</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1275">CORE-1275</a> - LoadData insert statements do not escape column names containing an open paren</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1312">CORE-1312</a> - Error when creating changelog tables</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1399">CORE-1399</a> - IncludeAll Failing when running in WAR files</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1440">CORE-1440</a> - Invalid Reorg table statement gets generated on DB2</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1504">CORE-1504</a> - dbDoc should html-encode author names</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1506">CORE-1506</a> - updateSQL generates invalid SQL for oracle</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1507">CORE-1507</a> - dropAll fails with NullPointerException</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1509">CORE-1509</a> - Memory improvements for large sqlFile files</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1510">CORE-1510</a> - Maven plugin fails to configure parameters within property file with trailing spaces, error message misleading</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1511">CORE-1511</a> - modifyDataType truncates enum values</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1512">CORE-1512</a> - Insert with valueClobFile fails with unicode encoding.</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1515">CORE-1515</a> - Liquibase MSSQL: Snapshot incorrectly injecting size for some datatypes</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1516">CORE-1516</a> - Liquibase MSSQL: Snapshot recording incorrect size for VARBINARY</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1517">CORE-1517</a> - Liquibase MSSQL: Autoincrement property of decimal datatype not supported</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1518">CORE-1518</a> - Liquibase MSSQL: Incorrect datatypes captured in the snapshot</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1520">CORE-1520</a> - Liquibase Snapshot: Default datetime is wrong</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1521">CORE-1521</a> - When generateChangeLog is run, objects do not always come back in a consistent order</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1522">CORE-1522</a> - PreparedStatement.setCharacterStream() not supported by Postgres JDBC driver.</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1524">CORE-1524</a> - Ant diff command running diffChangeLog</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1525">CORE-1525</a> - Liquibase MSSQL: Snapshot not capturing alter statements that add default values</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1526">CORE-1526</a> - Unicode string escaping in MSSQL</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1530">CORE-1530</a> - Column called VERSION is quoted in PostgreSQL</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1531">CORE-1531</a> - includeAll with relativeToChangeLogFile fails under certain conditions</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1532">CORE-1532</a> - NPE in ChangedIndexChangeGenerator</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1534">CORE-1534</a> - Single quotes in liquibase.bat causing issues</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1519">CORE-1519</a> - Allow relative file paths for valueClobFile and valueBlobFile inserts/updates.</li>
+  <li><a href="https://liquibase.jira.com/browse/CORE-1533">CORE-1533</a> - Performance improvements in dropAll</li>
+</ul>
+:ET

@@ -1,0 +1,27 @@
+I"I<p>Bugfix release Liquibase 3.5.1 is now available from <a href="/download">liquibase.org/download</a> and through the Maven repositories.</p>
+
+<h3 id="fixes-include">Fixes include:</h3>
+
+<ul>
+  <li>Fixed handling of Liquibase running inside a nested jar (like in Spring Boot)</li>
+  <li>NullPointerException in diff command</li>
+  <li>Fixes to whitespace handling and checksums in loadData</li>
+</ul>
+
+<h3 id="full-changelog">Full changelog:</h3>
+
+<ul>
+  <li>[CORE-2727] - NPE in DiffToReport.print() method</li>
+  <li>[CORE-2728] - Classloading broken in 3.5.0 with nested jars</li>
+  <li>[CORE-2729] - NullPointerException on Diff</li>
+  <li>[CORE-2731] - diff fails with NullPointerException</li>
+  <li>[CORE-2732] - releaseLock fails because ObjectQuotingStrategy is reset to LEGACY</li>
+  <li>[CORE-2733] - relativeToChangelogFile fails with FileSystemResourceAccessor</li>
+  <li>[CORE-2734] - Liquibase no longer handle newline correctly in endDelimiter when using sqlFile change</li>
+  <li>[CORE-2743] - CSV whitespace trimmed in 3.5.0</li>
+  <li>[CORE-2744] - changeset with loadUpdateData changes checksum in 3.5.0</li>
+  <li>[CORE-2745] - Performance degradation of sqlFile change</li>
+  <li>[CORE-2746] - Oracle: handle case when schema name contains a hyphen</li>
+  <li>[CORE-2750] - MSSQL catalog/database included all the time</li>
+</ul>
+:ET

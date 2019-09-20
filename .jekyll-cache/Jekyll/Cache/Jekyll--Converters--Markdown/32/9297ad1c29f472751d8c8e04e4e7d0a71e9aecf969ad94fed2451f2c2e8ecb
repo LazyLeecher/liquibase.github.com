@@ -1,0 +1,97 @@
+I"�<p>Bugfix release Liquibase 3.5.2 is now available from <a href="/download">liquibase.org/download</a> and through the Maven repositories.</p>
+
+<h3 id="highlights-include">Highlights include:</h3>
+
+<ul>
+  <li>Formatted SQL added rollbackSplitStatements and rollbackEndDelimiter changeSet attributes</li>
+  <li>Fixes for running in Spring boot 1.4.0</li>
+  <li>Performance improvements</li>
+  <li>More consistent use of the character encoding set with the liquibase.file.encoding system property</li>
+  <li>Improvements in support for clustered primary keys</li>
+  <li>Improved BINARY data type handling</li>
+  <li>Upgraded to SnakeYAML 1.17</li>
+</ul>
+
+<h3 id="full-changelog">Full changelog:</h3>
+
+<ul>
+  <li>[CORE-1863] - PostgreSQL blob is mapped to bytea instead of oid</li>
+  <li>[CORE-2693] - Postgresql dropAll with serial columns fails because tables are dropped then sequences which no longer exist</li>
+  <li>[CORE-2698] - <sqlFile> Oracle scripts with ending / are not actually getting executed even with splitStatements="false"</sqlFile></li>
+  <li>[CORE-2752] - Jtds has silent exceptions in db.getConnectionSchemaName</li>
+  <li>[CORE-2753] - defaultValueSequenceNext forgets schema name</li>
+  <li>[CORE-2754] - update table columns are not quoted when requested</li>
+  <li>[CORE-2756] - Null pointer exception from FileSystemResourceAccessor</li>
+  <li>[CORE-2757] - Databasechangelog ORDEREXECUTED and DEPLOYMENT_ID not updated when a changeSet is reran</li>
+  <li>[CORE-2758] - Debian package shouldn’t symlink liquibase binary to absolute path</li>
+  <li>[CORE-2761] - 3.5.1: includeAll from the command line uses the absolute path as the changeSet path</li>
+  <li>[CORE-2763] - Postgresql schemas should default to lower case</li>
+  <li>[CORE-2765] - dbms in preConditions yaml changelog causes parsing error</li>
+  <li>[CORE-2770] - Can’t read remarks from mssql 2000</li>
+  <li>[CORE-2774] - Can’t read all columns from mssql2000</li>
+  <li>[CORE-2775] - Oracle Sequences not Generated in generateChangeLog after 3.4.1</li>
+  <li>[CORE-2778] - Sybase ASE: Incorrect syntax near the keyword ‘ALTER’</li>
+  <li>[CORE-2780] - java.sql.SQLException: PooledConnection has already been closed</li>
+  <li>[CORE-2781] - DB2: custom-generated indexes for primary keys are not preserved in diff/generateChangeLog</li>
+  <li>[CORE-2784] - REGRESSION: Column creation of type ‘TIMESTAMP WITHOUT TIMEZONE’ fails on PostgreSQL</li>
+  <li>[CORE-2785] - Status command inconsistent with databasechangelog table</li>
+  <li>[CORE-2786] - Incorrect xml scheme for changlog file</li>
+  <li>[CORE-2787] - YAML Snapshot parser not handling strings that get stored as binary</li>
+  <li>[CORE-2789] - Postgres does not have a type “BINARY”</li>
+  <li>[CORE-2791] - Strip off trailing end delimiter in createProcedure on update, include on updateSql</li>
+  <li>[CORE-2793] - using property as startWith attribute</li>
+  <li>[CORE-2794] - Make CSV files created by Liquibase readable by Liquibase</li>
+  <li>[CORE-2795] - Fix a NullPointerException in DiffToChangeLog.sortMissingObjects</li>
+  <li>[CORE-2804] - defaultValueSequenceNext forgets schema name H2/PG/etc</li>
+  <li>[CORE-2805] - Multiple calls to generateChecksum() impacting deploy performance</li>
+  <li>[CORE-2806] - JsonSnapshotParser does not close stream after parsing</li>
+  <li>[CORE-2807] - Column data type “real” incorrectly translated to “double precision” for PostgreSQL, should be “real”</li>
+  <li>[CORE-2810] - defaultValueBoolean=”false” generates wrong SQL for MySQL</li>
+  <li>[CORE-2811] - FileSystemResourceAccessor basepath/includeAll</li>
+  <li>[CORE-2813] - java.lang.NullPointerException when creating new ClassLoaderResourceAccessor();</li>
+  <li>[CORE-2814] - DB2: Quoting strategy not respected, objects are always saved as upper case</li>
+  <li>[CORE-2815] - Rollback by tag doesn’t roll back tagDatabase changeSet</li>
+  <li>[CORE-2816] - Snapshot error when snapshotting an index or primary key against a case-sensitive column</li>
+  <li>[CORE-2818] - DEPLOYMENT_ID not created for Sybase in DATABASECHANGELOG, liquibase 3.5.1</li>
+  <li>[CORE-2819] - AbstractJdbcData getConnectionSchemaName() methods fails for Sybase</li>
+  <li>[CORE-2823] - DROP PRIMARY KEY fails for Sybase database update</li>
+  <li>[CORE-2827] - MSSQL: misc default value fixes</li>
+  <li>[CORE-2828] - MSSQL not capturing that primary key are non-clustered in generateChangeLog</li>
+  <li>[CORE-2830] - GenerateChangeLog does not handle tables with compound primary keys</li>
+  <li>[CORE-2831] - MySql BIT(1) defaultValue not snapshotted as Boolean</li>
+  <li>[CORE-2835] - GenerateChangeLog doesn’t correctly “numeric DEFAULT ‘” “ columns</li>
+  <li>[CORE-2836] - addAutoIncrement generates inconsistent sequence name for mixed-case table</li>
+  <li>[CORE-2837] - addAutoIncrement doesn’t apply default schema in nextval call (PostgreSQL)</li>
+  <li>[CORE-2838] - createProcedure schema in the changelog is overwritten by defaultSchemaName</li>
+  <li>[CORE-2840] - MSSQL createProcedure for CREATE MERGE AS procedures need a trailing semicolon</li>
+  <li>[CORE-2843] - Sql wrong lexical analysis for string literals - escaped single quotes are misparsed</li>
+  <li>[CORE-2846] - DATABASECHANGELOG table query failed on postgres on first run</li>
+  <li>[CORE-2849] - Fail to execute with sequences</li>
+  <li>[CORE-2853] - Diff comparisions reporting differences between ‘0.0’ and ‘0’ in decimals</li>
+  <li>[CORE-2863] - Issue with Spring boot 1.4.0</li>
+  <li>[CORE-2864] - Regression for defaultSchemaName on MSSQL</li>
+  <li>[CORE-2867] - liquibase with MySQL raises exception “Table ‘DATABASECHANGELOG’ already exists” when using separate liquibase schema</li>
+  <li>[CORE-2868] - <createProcedure> Adds schema/username to package and package body in oracle making them invalid</createProcedure></li>
+  <li>[CORE-2869] - Without a specified classpath, using includeAll with relativeToChangelogFile=”true” fails</li>
+  <li>[CORE-2872] - “ON DELETE” not supported for FK constraints in Sybase</li>
+  <li>[CORE-2876] - Issue with Spring boot 1.4.0 Repackaged</li>
+  <li>[CORE-2878] - MSSQL setTableRemarks limited to 200 chars</li>
+  <li>[CORE-2881] - DiffChangeLog unnecessarily includes referenceTableCatalogName attribute if comparing Schema with different names</li>
+  <li>[CORE-2885] - AddColumn with defaultValueSequenceNext generated incorrect SQL for PostgreSQL</li>
+  <li>[CORE-2788] - handle VARBINARY type in Oracle and H2</li>
+  <li>[CORE-2800] - Add flag to diff command that suppresses reporting of column order difference in tables</li>
+  <li>[CORE-1984] - Support for non-split rollback statements in Formatted SQL</li>
+  <li>[CORE-2768] - Have the .deb and .rpm part of the release on github</li>
+  <li>[CORE-2782] - Update SnakeYAML version to 1.17</li>
+  <li>[CORE-2801] - Add method to Logger to allow closing of the output file stream</li>
+  <li>[CORE-2844] - Traverse parent changelogs for rollbacks</li>
+  <li>[CORE-2848] - Oracle: primary keys that use a pre-existing index drop the index along with the primary key on rollback</li>
+  <li>[CORE-2852] - Postgresql snapshots not correctly handling serial-backing sequences</li>
+  <li>[CORE-2857] - Support clustered primary keys in postgresql</li>
+  <li>[CORE-2873] - Postgresql custom types are snapshotted as having length 2147483647</li>
+  <li>[CORE-2874] - Ensure consistent charset encoding usage</li>
+</ul>
+
+<p><a href="https://liquibase.jira.com/secure/ReleaseNote.jspa?projectId=10020&amp;version=13260">Issue Tracker</a></p>
+
+:ET

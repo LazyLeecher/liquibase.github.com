@@ -1,0 +1,114 @@
+I"�<h1 id="30-to-31-upgrade-guide">3.0 to 3.1 Upgrade Guide</h1>
+
+<p>For must Liquibase end users, Liquibase 3.1 is a drop-in replacement for any Liquibase 3.0 version.</p>
+
+<p>If you are using <includeAll> with relative paths or running against InterSystems Cache, SAP MaxDB or IBM DB2 for iSeries see the notes below.</includeAll></p>
+
+<p>For developers of Liquibase extensions, there has been some Java API changes that may impact your code.</p>
+
+<p><a href="v3_upgrade.html">2.x to 3.0 upgrade guide</a></p>
+
+<h2 id="change-to-how--referenced-files-are-tracked">Change to how <includeAll> referenced files are tracked.</includeAll></h2>
+
+<p>With certain builds in 3.0.x, using <includeAll> with relativeToChangeLog caused the file path stored in DATABASECHANGELOG to have the full physical path, rather than classpath relative paths.</includeAll></p>
+
+<p>With 3.1.0, this bug is fixed, but if you have changeLogs that have already ran, liquibase may attempt to re-execute them because the filepath column is part of the changeSet identifier and it now sees it as different.</p>
+
+<p>You can resolve the problem in one of two ways:</p>
+
+<ul>
+  <li>
+    <p>Set a “logicalFilePath” in the included changeLogs equal to the full path as it was stored before</p>
+  </li>
+  <li>
+    <p>Manually update your DATABASECHANGELOG table to strip off the extra portion of the path. The SQL will vary by database, but an example for mysql would be:</p>
+
+    <p><code class="highlighter-rouge">update DATABASECHANGELOG set FILENAME=REPLACE(filename, 'c:\my\root\path', '')</code></p>
+  </li>
+</ul>
+
+<h2 id="less-common-database-support-moved-to-extensions">Less common database support moved to extensions</h2>
+
+<p>If you are using Liquibase with Cache, MaxDB or DB2 for iSeries, support has been moved out of Liquibase core and into extensions.</p>
+
+<p>To re-enable support for these databases, install the corresponding extension:</p>
+
+<ul>
+  <li><a href="https://github.com/liquibase/liquibase-cache">InterSystems Cache</a></li>
+  <li><a href="https://github.com/liquibase/liquibase-maxdb">SAP MaxDB</a></li>
+  <li><a href="https://github.com/liquibase/liquibase-db2i">IBM DB2 for iSeries</a></li>
+</ul>
+
+<h2 id="class-liquibaseexecutorexecutor-changes">Class liquibase.executor.Executor changes</h2>
+
+<p>The liquibase.executor.Executor queryForList methods now return <code class="highlighter-rouge">List&lt;Map&lt;String, ?&gt;&gt;</code> rather than just <code class="highlighter-rouge">List&lt;Map&gt;</code></p>
+
+<h2 id="interface-liquibasedatabasedatabase-changes">Interface liquibase.database.Database changes</h2>
+
+<p>There is a new <code class="highlighter-rouge">addReservedWords(words)</code> method to implement. If extending AbstractJdbcDatabase, the default implementation should work for you.</p>
+
+<p>The following methods were removed from liquibase.database.Database in favor of extensible service implementations:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>3.0</th>
+      <th>3.1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>hasDatabaseChangeLogLockTable()</td>
+      <td>((StandardLockService) liquibase.lockservice.LockServiceFactory.getInstance().getLockService(database)).hasDatabaseChangeLogLockTable()</td>
+    </tr>
+    <tr>
+      <td>checkDatabaseChangeLogLockTable()</td>
+      <td>liquibase.lockservice.LockServiceFactory.getInstance().getLockService(database).init()</td>
+    </tr>
+    <tr>
+      <td>checkDatabaseChangeLogTable(updateExistingNullChecksums, databaseChangeLog, contexts)</td>
+      <td>liquibase.changelog.ChangeLogServiceFactory.getInstance().getChangeLogService(database).init()</td>
+    </tr>
+    <tr>
+      <td>hasDatabaseChangeLogTable()</td>
+      <td>((StandardChangeLogHistoryService) liquibase.changelog.ChangeLogServiceFactory.getInstance().getChangeLogService(database)).hasDatabaseChangeLogTable()</td>
+    </tr>
+    <tr>
+      <td>getNextChangeSetSequenceValue()</td>
+      <td>liquibase.changelog.ChangeLogServiceFactory.getInstance().getChangeLogService(database).getNextSequenceValue()</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="interface-liquibaselockservicelockservice-changes">Interface liquibase.lockservice.LockService changes</h2>
+
+<p>New methods were added to the LockService interface:</p>
+
+<ul>
+  <li>init()</li>
+  <li>destroy()</li>
+</ul>
+
+<p>The class liquibase.lockservice.LockServiceImpl has been renamed to liquibase.lockservice.StandardLockService, although a deprecated placeholder with the old name was introduced for backwards compatibility.</p>
+
+<h2 id="interface-liquibasechangelogvisitorchangeexeclistener-changes">Interface liquibase.changelog.visitor.ChangeExecListener changes</h2>
+
+<p>New methods were added to the ChangeExecListener interface:</p>
+
+<ul>
+  <li>preconditionFailed</li>
+  <li>preconditionErrored</li>
+  <li>willRun</li>
+  <li>ran</li>
+</ul>
+
+<h2 id="interface-liquibasesnapshotsnapshotgenerator-changes">Interface liquibase.snapshot.SnapshotGenerator changes</h2>
+
+<p>A new replaces() method was added to SnapshotGenerator. The default implementation in JdbcSnapshotGenerator is a no-op which should work for most uses.</p>
+
+<h2 id="standardized-resourceaccessor-handling-of-missing-files">Standardized ResourceAccessor handling of missing files.</h2>
+
+<p>CommandLineResourceAccessor now returns null if a file does not exist rather than throwing an IOException. This behavior now matches the other ResourceAccessors.</p>
+
+<p>An IOException should only be thrown by a ResourceAccessor if the file exists but there is a problem reading it.</p>
+:ET

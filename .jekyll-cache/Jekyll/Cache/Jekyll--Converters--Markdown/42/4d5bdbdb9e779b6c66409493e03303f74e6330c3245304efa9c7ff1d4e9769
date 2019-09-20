@@ -1,0 +1,58 @@
+I"�<h1 id="liquibase-for-developers">Liquibase for Developers</h1>
+
+<h3 id="store-your-database-changes-with-your-code">Store your database changes with your code</h3>
+
+<p>Your database schema is an integral part of your application, so store your changelog files along side your application code. That will allow your existing version control system to ensure everything is kept in sync–whenever you commit your code your database changes will go with it and whenever anyone updates their code they will get the new database schema.</p>
+
+<h3 id="supports-branches">Supports branches</h3>
+
+<p>Branches are an integral part of developing code and your database changes need to flow along with them. Because Liquibase tracks each changeSet independently rather than relying on a single incrementing “database version”, when you merge in a branch all the new changeSets will execute as expected, even if there were “later” changeSets already executed.</p>
+
+<p>When you do run into merge issues, the simple text formats used for the changelog files can be easily merged with your favorite tools.</p>
+
+<h3 id="author-changesets-in-your-favorate-markup">Author changeSets in your favorate markup</h3>
+
+<p>Liquibase supports changelogs written in XML, YAML, JSON and SQL. Use whatever is most readable to you</p>
+
+<h3 id="know-that-your-changes-will-not-get-forgotten-down-the-line">Know that your changes will not get forgotten down the line</h3>
+
+<p>Liquibase <a href="documentation/databasechangelog.html">tracks which changelog statements</a> have run against each database, so once you create a changeSet you can be confident that it will be deployed through QA and production.</p>
+
+<p>For best results, append a new changeSets as needed then run liquibase update to apply it to your local database. This works better than making changes to your database directly and then re-writing it as a changeSet because you are truly running the same update as everyone else will.</p>
+
+<h3 id="like-sql-use-sql">Like SQL? Use SQL</h3>
+
+<p>XML-formatted changelogs have their advantages, but many DBAs still prefer good, old fashioned SQL. If that is what you are most comfortable working with, <a href="documentation/sql_format.html">Liquibase-formatted SQL</a> gives you the standard changeSet tracking used in any changelog format, but lets you specify the exact SQL you want.</p>
+<h3 id="easier-test-data-management">Easier test data management</h3>
+
+<p>Normally, test data is stored in something like CSV files which are loaded into the database after it is built. The problem with this strategy is that any schema changes will usually break in your data load process, leading to hours of time spent figuring out what the test data was trying to expose and then adjusting the files to match the new schema.</p>
+
+<p>Instead of loading the data into the final schema, build up your test data within your changelog file. Use <a href="/documentation/changes/load_data.html">loadData</a> or standard <a href="/documentation/changes/sql.html">sql</a> to load data into the schema as it is now, then as new schema changes are appended to the changelog your test data will be migrated just like production data would be. This not only keeps you from having to continually update your CSV files, but also helps verify that existing data is handled correctly.</p>
+
+<p>Use <a href="/documentation/contexts.html">contexts</a> and labels to mark which changeSets contain test data so they are not deployed to production.</p>
+
+<h3 id="sanity-checks">Sanity checks</h3>
+
+<p>Liquibase ships with several tools you can use to make sure changes are being applied correctly, check current database state, and that nobody is sneaking in changes out of process.</p>
+
+<ul>
+  <li>The status and validate commands report on what changeSets have not yet been ran and checks the changelog for errors.</li>
+  <li>The <a href="/documentation/diff.html">diff</a> command reports on differences between databases to ensure that two fully updated databases are truly identical</li>
+  <li>The <a href="/documentation/dbdoc.html">dbdoc</a> command generates documentation on the current database structure and its changes over time</li>
+</ul>
+
+<h3 id="enterprise-features-with-datical">Enterprise features with Datical</h3>
+
+<p>Beyond all the standard Liquibase functionality, Datical lets you</p>
+
+<ul>
+  <li><a href="http://www.datical.com/product/packaging-intelligence/">Package database schema changes</a> alongside application code</li>
+  <li>Simulate deployments to <a href="http://www.datical.com/product/validation-intelligence/">forecast potential errors</a></li>
+  <li><a href="http://www.datical.com/product/management-intelligence/">Know the deployment status</a> of every schema in the database</li>
+  <li>Integrate with popular <a href="http://www.datical.com/integrations/">DevOps tools</a></li>
+</ul>
+
+<hr />
+
+<p>Liquibase for <a href="/dba.html">DBAs</a> | <a href="/qa.html">QA</a> | <a href="/release_manager.html">Release Managers</a></p>
+:ET

@@ -1,0 +1,22 @@
+I";<h1 id="database-documentation-generator">Database Documentation Generator</h1>
+
+<p>Using change information stored in the change logs and an existing database, Liquibase can generate database change documentation.</p>
+
+<h2 id="running-dbdoc">Running DBDoc</h2>
+
+<p>The dbDoc command support is currently available through the <a href="command_line.html">command line</a> only.</p>
+
+<h2 id="example">Example</h2>
+
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">liquibase.sh <span class="nt">--driver</span><span class="o">=</span>oracle.jdbc.OracleDriver <span class="se">\</span>
+        <span class="nt">--url</span><span class="o">=</span>jdbc:oracle:thin:@testdb:1521:test <span class="se">\</span>
+        <span class="nt">--username</span><span class="o">=</span>bob <span class="se">\</span>
+        <span class="nt">--password</span><span class="o">=</span>bob <span class="se">\</span>
+        <span class="nt">--changeLogFile</span><span class="o">=</span>path/to/changelog.xml
+    dbDoc <span class="se">\</span>
+        /docs/dbdoc</code></pre></figure>
+
+<h2 id="sample-output">Sample Output</h2>
+
+<p>The documentation output is based on a “JavaDoc” style documentation. The report of changes from our sample changelog is available <a href="http://www.liquibase.org/dbdoc/index.html">here</a>.</p>
+:ET
