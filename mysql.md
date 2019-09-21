@@ -30,7 +30,7 @@ The purpose of this document is to guide you through the process of creating a n
 
 >**Example:** C:\Users\Liquibase_Drivers\mysql-connector-java-5.1.48.jar
 
-##Tutorial
+## Tutorial
 
 #### To create a Liquibase project with MySQL on your Windows machine, begin with the following steps:
 
