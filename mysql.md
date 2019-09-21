@@ -3,7 +3,7 @@ layout: default
 title: MySQL
 ---
 
-#### To test your connection, try running liquibase with the the JDBC driver located in the same directory as liquibase:
+#### To test your connection, try running liquibase with the JDBC driver located in the same directory as liquibase:
 
 {% highlight sh %}
 
@@ -116,7 +116,7 @@ CREATE TABLE "department"
 *	 From a database UI Tool, for example: “MySQL Workbench” check your database changes under “**my_schema**”.
 You should see a new “**department**” table added to the database.  For example:
 
-    `SELECT * FROM my_schema.department;`
+    SELECT * FROM my_schema.department;
 	
 	
 |ID  |NAME  |ACTIVE |
