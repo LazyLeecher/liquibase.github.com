@@ -9,9 +9,9 @@ title: MySQL
 
 liquibase
 --driver=com.mysql.cj.jdbc.Driver
---classpath=mysql-connector-java-5.1.21-bin.jar 
+--classpath=mysql-connector-java-5.1.21-bin.jar
 --url="jdbc:mysql://<IP OR HOSTNAME>:<PORT>/<SCHEMA NAME>?autoReconnect=true&useSSL=FALSE|TRUE"
---changeLogFile=db.changelog-1.0.xml 
+--changeLogFile=db.changelog-1.0.xml
 --username=<MYSQL USERNAME>
 --password=<MYSQL PASSWORD>
 generateChangeLog
@@ -23,7 +23,7 @@ generateChangeLog
 The purpose of this document is to guide you through the process of creating a new Liquibase project with **MySQL** on a **Windows** machine. In this tutorial, you will generate an example project and follow the instructions to apply and learn concepts associated with creating new Liquibase Projects with MySQL.
 ### Prerequisites
 * If you have not installed the latest version of Liquibase, navigate to [https://download.liquibase.org/download](https://download.liquibase.org/download) to install the software application.
-* Ensure the liquibase.bat file’s path is set to a location in the PATH System variable. 
+* Ensure the liquibase.bat file’s path is set to a location in the PATH System variable.
 * Navigate to [https://dev.mysql.com/downloads/connector/j/](https://dev.mysql.com/downloads/connector/j/) and download the jdbc driver jar file for MySQL.<br />
 
 > **Note:** Place the jdbc jar driver file in a known directory so you can locate it easily.
@@ -65,7 +65,7 @@ Changelog files contain a sequence of changesets, each of which make small chang
     classpath: ../../Liquibase_Drivers/mysql-connector-java-5.1.48.jar
 
 {% endhighlight %}
-Because you are creating this project on Windows OS, you must specify the path with double slashes in the changeLogFile property. You must also use a relative path from your project directory to the driver ojdbc jar file location in the classpath property.
+Because you are creating this project on Windows OS, you must specify the path with double slashes in the changeLogFile property. You must also use a relative path from your project directory to the driver jdbc jar file location in the classpath property.
 
 > Note: If you already have a Liquibase Pro key and want to apply it to
 > your project, add the following property to your liquibase.properties
@@ -95,7 +95,7 @@ In the dbchangelog.xml file line 9 to 20 add a new “department” create table
 			defaultValueBoolean="true"/>
         </createTable>
    </changeSet>
-</databaseChangeLog>	
+</databaseChangeLog>
 {% endhighlight %}
 
 > Note: This create table change set is XML format.  The corresponding
@@ -103,29 +103,29 @@ In the dbchangelog.xml file line 9 to 20 add a new “department” create table
 
 {% highlight sh %}
 CREATE TABLE "department"
-(	"id" number(*,0), 
-	"name" VARCHAR2(50 BYTE), 
+(	"id" number(*,0),
+	"name" VARCHAR2(50 BYTE),
 	"active" NUMBER(1,0) DEFAULT 1
 );
 {% endhighlight %}
 
 * Open the command prompt.  Navigate to the LiquibaseMySQL directory.  
   Run the following command:
-  
+
   ### "liquibase update"
 *	 From a database UI Tool, for example: “MySQL Workbench” check your database changes under “**my_schema**”.
 You should see a new “**department**” table added to the database.  For example:
 
     SELECT * FROM my_schema.department;
-	
-	
+
+
 |ID  |NAME  |ACTIVE |
 |--|--|--|
 |NULL |NULL  |NULL|
 
 
-Also, you should see two more tables: 
-*	**DATABASECHANGELOG** tracking table – This table keeps a record of all the changesets that were deployed.  This way, next time when you deploy again, the changesets in the changelog will be compared with the DATABASECHANGELOG tracking table and only the new changesets that were not found in the DATABASECHANGELOG will be deployed.  You will notice that a new row was created in that table with the changeset information we have just deployed. 
+Also, you should see two more tables:
+*	**DATABASECHANGELOG** tracking table – This table keeps a record of all the changesets that were deployed.  This way, next time when you deploy again, the changesets in the changelog will be compared with the DATABASECHANGELOG tracking table and only the new changesets that were not found in the DATABASECHANGELOG will be deployed.  You will notice that a new row was created in that table with the changeset information we have just deployed.
 For this example:
 
 |ID|AUTHOR |FILENAME       |DATEEXECUTED|ORDEREXECUTED|EXECTYPE|MDSUM|...|
